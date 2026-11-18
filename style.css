@@ -542,36 +542,35 @@ body {
 
 /* S.A.M.O.R.E Grid Cards (Single Straight Horizontal Line S-A-M-O-R-E) */
 .samore-legend-grid {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 12px;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: stretch !important;
+  gap: 12px !important;
   margin-top: 24px;
-  width: 100%;
-  box-sizing: border-box;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  padding-bottom: 8px;
+  scrollbar-width: thin;
 }
 
-@media (max-width: 1024px) {
-  .samore-legend-grid {
-    grid-template-columns: repeat(6, minmax(160px, 1fr));
-    overflow-x: auto;
-    padding-bottom: 10px;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin;
-  }
-  .samore-legend-grid::-webkit-scrollbar {
-    height: 5px;
-  }
-  .samore-legend-grid::-webkit-scrollbar-track {
-    background: rgba(4, 8, 16, 0.6);
-  }
-  .samore-legend-grid::-webkit-scrollbar-thumb {
-    background: var(--border-cyan);
-    border-radius: 3px;
-  }
+.samore-legend-grid::-webkit-scrollbar {
+  height: 5px;
+}
+.samore-legend-grid::-webkit-scrollbar-track {
+  background: rgba(4, 8, 16, 0.6);
+}
+.samore-legend-grid::-webkit-scrollbar-thumb {
+  background: var(--border-cyan);
+  border-radius: 3px;
 }
 
 .legend-card {
+  flex: 1 1 0% !important;
+  min-width: 140px !important;
+  max-width: none !important;
   background: rgba(7, 12, 24, 0.9);
   border: 1px solid var(--border-dim);
   padding: 14px 12px;
@@ -582,7 +581,7 @@ body {
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  scroll-snap-align: start;
+  box-sizing: border-box !important;
 }
 
 .legend-card:active {
