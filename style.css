@@ -33,6 +33,27 @@
   padding: 0;
 }
 
+/* High-Contrast Highlight / Text Selection */
+::selection {
+  background: #00ff41 !important;
+  color: #000000 !important;
+  text-shadow: none !important;
+}
+
+::-moz-selection {
+  background: #00ff41 !important;
+  color: #000000 !important;
+  text-shadow: none !important;
+}
+
+mark {
+  background: #00f0ff;
+  color: #000000;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 2px;
+}
+
 body {
   background-color: var(--bg-primary);
   color: var(--text-white);

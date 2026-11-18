@@ -13,10 +13,10 @@
 ### `> AI/ML RESEARCHER • CYBER THREAT DEFENSE (SHUGO) • CERTIFIED ETHICAL HACKER (CEH)`
 
 <p>
-  <img src="https://img.shields.io/badge/CLEARANCE-LEVEL_5_ROOT-00ff41?style=for-the-badge&logo=hackthebox&logoColor=black" />
-  <img src="https://img.shields.io/badge/CEH-CERTIFIED_ETHICAL_HACKER-ff0055?style=for-the-badge&logo=kalilinux&logoColor=white" />
-  <img src="https://img.shields.io/badge/OPENSHIFT-RED_HAT_AI_2.13-ee0000?style=for-the-badge&logo=redhatopenshift&logoColor=white" />
-  <img src="https://img.shields.io/badge/DEFENSE-SHUGO_INTELLIGENCE-00f0ff?style=for-the-badge&logo=target&logoColor=black" />
+  <img src="https://img.shields.io/badge/CLEARANCE-LEVEL_5_ROOT-0e4429?style=for-the-badge&logo=hackthebox&logoColor=00ff41&labelColor=091220" />
+  <img src="https://img.shields.io/badge/CEH-CERTIFIED_ETHICAL_HACKER-800020?style=for-the-badge&logo=kalilinux&logoColor=ff0055&labelColor=091220" />
+  <img src="https://img.shields.io/badge/OPENSHIFT-RED_HAT_AI_2.13-8b0000?style=for-the-badge&logo=redhatopenshift&logoColor=ff4444&labelColor=091220" />
+  <img src="https://img.shields.io/badge/DEFENSE-SHUGO_INTELLIGENCE-003b5c?style=for-the-badge&logo=target&logoColor=00f0ff&labelColor=091220" />
 </p>
 
 ---
@@ -100,15 +100,15 @@ You can launch and play all 8 games directly in the companion **[Cyber-Deck Term
 <br/>
 
 <a href="mailto:shrikantashokmore@gmail.com">
-  <img src="https://img.shields.io/badge/ENCRYPTED_EMAIL-shrikantashokmore%40gmail.com-00ff41?style=for-the-badge&logo=gmail&logoColor=black&labelColor=0d1117" alt="Direct Email" />
+  <img src="https://img.shields.io/badge/ENCRYPTED_EMAIL-shrikantashokmore%40gmail.com-0e4429?style=for-the-badge&logo=gmail&logoColor=00ff41&labelColor=091220" alt="Direct Email" />
 </a>
 &nbsp;&nbsp;
 <a href="https://www.linkedin.com/in/samore141025/" target="_blank">
-  <img src="https://img.shields.io/badge/LINKEDIN-shrikant_more-00f0ff?style=for-the-badge&logo=linkedin&logoColor=black&labelColor=0d1117" alt="LinkedIn Profile" />
+  <img src="https://img.shields.io/badge/LINKEDIN-shrikant_more-003b5c?style=for-the-badge&logo=linkedin&logoColor=00f0ff&labelColor=091220" alt="LinkedIn Profile" />
 </a>
 &nbsp;&nbsp;
 <a href="https://github.com/Samore141025" target="_blank">
-  <img src="https://img.shields.io/badge/GITHUB-Samore141025-ffffff?style=for-the-badge&logo=github&logoColor=black&labelColor=0d1117" alt="GitHub Profile" />
+  <img src="https://img.shields.io/badge/GITHUB-Samore141025-24292f?style=for-the-badge&logo=github&logoColor=ffffff&labelColor=091220" alt="GitHub Profile" />
 </a>
 
 <br/><br/>
