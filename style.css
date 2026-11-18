@@ -10,7 +10,7 @@
 :root {
   --bg-primary: #050811;
   --bg-secondary: #0a1020;
-  --bg-card: rgba(9, 16, 30, 0.94);
+  --bg-card: rgba(8, 14, 28, 0.76);
   --border-neon: #00ff41;
   --border-cyan: #00f0ff;
   --border-dim: #1d2d47;
@@ -43,7 +43,7 @@ body {
   cursor: crosshair;
 }
 
-/* Full-Screen Matrix Rain Background Canvas */
+/* Full-Screen Matrix Rain Background Canvas (Vibrant & Visible) */
 #matrix-canvas {
   position: fixed;
   top: 0;
@@ -52,7 +52,7 @@ body {
   height: 100%;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.28;
+  opacity: 0.85;
 }
 
 /* Custom Interactive Cursor Floating Element */

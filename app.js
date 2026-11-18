@@ -239,23 +239,30 @@ class MatrixRainEngine {
       return;
     }
 
-    this.ctx.fillStyle = 'rgba(5, 8, 17, 0.08)';
+    // Semi-transparent fade creates longer, glowing digital trails
+    this.ctx.fillStyle = 'rgba(5, 8, 17, 0.06)';
     this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
-    this.ctx.font = `${this.fontSize}px monospace`;
+    this.ctx.font = `bold ${this.fontSize}px monospace`;
 
     for (let i = 0; i < this.drops.length; i++) {
       const text = this.characters.charAt(Math.floor(Math.random() * this.characters.length));
       const x = i * this.fontSize;
       const y = this.drops[i] * this.fontSize;
 
-      this.ctx.fillStyle = '#d2ffff';
+      // Leading glowing head glyph
+      this.ctx.fillStyle = '#ffffff';
+      this.ctx.shadowBlur = 10;
+      this.ctx.shadowColor = '#00ff41';
       this.ctx.fillText(text, x, y);
 
+      // Trailing stream glyphs
       this.ctx.fillStyle = '#00ff41';
+      this.ctx.shadowBlur = 6;
       this.ctx.fillText(text, x, y - this.fontSize);
+      this.ctx.shadowBlur = 0;
 
-      if (y > this.canvas.height && Math.random() > 0.975) {
+      if (y > this.canvas.height && Math.random() > 0.972) {
         this.drops[i] = 0;
       }
       this.drops[i]++;
