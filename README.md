@@ -21,11 +21,6 @@
 
 ---
 
-<h3>🚀 <a href="https://samore141025.github.io/samore141025/" target="_blank">&gt;&gt; CLICK HERE TO LAUNCH LIVE CYBER TERMINAL &amp; ARCADE &lt;&lt;</a></h3>
-<p><em>Featuring digital Matrix Rain, real-time autonomous snake AI, speaking voice AI agent, and 8 playable cyber mini-games.</em></p>
-
----
-
 </div>
 
 ### 🛡️ THE CODEX OF S.A.M.O.R.E.
@@ -68,22 +63,6 @@
   </a>
 </div>
 
----
-
-### 🕹️ THE CYBER ARCADE PROTOCOLS (8 MINI-GAMES EMBEDDED)
-
-You can launch and play all 8 games directly in the companion **[Cyber-Deck Terminal](https://samore141025.github.io/samore141025/)**:
-
-| Protocol ID | Mini-Game | Classification | Mission Objective |
-| :---: | :--- | :--- | :--- |
-| **`MOD_01`** | **Cyber Snake** | Contributions | Consume green commits, expand the matrix streak, avoid firewalls |
-| **`MOD_02`** | **Terminal Breach** | Cryptography | Crack the 4-digit hexadecimal security access key with parity hints |
-| **`MOD_03`** | **Matrix Runner** | Reflex / Agility | Dodge cascading glitch debris in falling matrix data streams |
-| **`MOD_04`** | **Memory Core** | Neural / Memory | Simon Says: repeat escalating 4-quadrant firewall defense signals |
-| **`MOD_05`** | **DDoS Defense** | Defense / Blaster | Intercept and shoot down incoming malicious packet swarms |
-| **`MOD_06`** | **Cipher Decode** | Cryptanalysis | Decrypt scrambled cybersecurity terms against a 30s countdown clock |
-| **`MOD_07`** | **Cyber Invaders** | Space Retro | Repel descending waves of rogue AI daemons with pulse lasers |
-| **`MOD_08`** | **Binary Pong** | AI Simulation | High-speed neon table pong against an adaptive firewall daemon |
 
 ---
 

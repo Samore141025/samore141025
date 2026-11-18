@@ -136,152 +136,16 @@
 
     <!-- Navigation Tabs -->
     <nav class="cyber-tabs">
-      <button class="tab-btn active" data-tab="tab-arcade">🕹️ 8-GAME CYBER ARCADE</button>
-      <button class="tab-btn" data-tab="tab-ai">🤖 SAMORE-AI VOICE AGENT</button>
+      <button class="tab-btn active" data-tab="tab-ai">🤖 SAMORE-AI VOICE AGENT</button>
       <button class="tab-btn" data-tab="tab-contact">📡 TRANSMISSION UPLINK</button>
     </nav>
 
-    <!-- TAB 1: 8-GAME CYBER ARCADE -->
-    <section class="tab-content active" id="tab-arcade">
 
-      <!-- Active Game Arena Modal / Stage -->
-      <div id="game-arena">
-        <div class="arena-controls">
-          <div class="arena-title">
-            <span>🕹️</span>
-            <span id="arenaGameTitle">CYBER ARENA ACTIVE</span>
-          </div>
-          <div style="display: flex; gap: 10px; align-items: center;">
-            <div style="font-family: var(--font-cyber); font-size: 15px; color: var(--text-cyan); margin-right: 12px;">
-              SCORE: <span id="arenaScore" style="color: var(--text-primary); font-weight: 700;">0</span>
-            </div>
-            <button class="hud-btn" id="restartGameBtn">↺ RESTART</button>
-            <button class="close-arena-btn" id="closeArenaBtn">✕ TERMINATE</button>
-          </div>
-        </div>
 
-        <div class="game-canvas-wrapper">
-          <canvas id="activeGameCanvas"></canvas>
-        </div>
 
-        <!-- Virtual D-Pad Game Controller (For Touch & Mouse Users) -->
-        <div class="virtual-controls-wrapper">
-          <div class="dpad-row">
-            <button class="v-btn" data-key="ArrowUp" title="Up">▲</button>
-          </div>
-          <div class="dpad-row">
-            <button class="v-btn" data-key="ArrowLeft" title="Left">◀</button>
-            <button class="v-btn v-action-btn" data-key="Space" title="Fire / Action">⚡ ACTION / FIRE</button>
-            <button class="v-btn" data-key="ArrowRight" title="Right">▶</button>
-          </div>
-          <div class="dpad-row">
-            <button class="v-btn" data-key="ArrowDown" title="Down">▼</button>
-          </div>
-        </div>
 
-        <div class="game-hud-bar">
-          <span>&gt; CONTROLS: Arrow Keys / WASD / Spacebar OR Click Virtual D-Pad above</span>
-          <span style="color: var(--text-cyan);">&gt; AUDIO: Synthesized Web Audio FX Online</span>
-        </div>
-      </div>
-
-      <div class="arcade-header">
-        <div>
-          <h2 class="arcade-title">TERMINAL CYBER ARCADE // 8 DYNAMIC GAMES</h2>
-          <p style="font-size: 13.5px; color: var(--text-muted); margin-top: 4px;">
-            Select any protocol module below to deploy and launch in the real-time simulation arena.
-          </p>
-        </div>
-      </div>
-
-      <!-- 8 Dynamic Games Grid -->
-      <div class="games-grid">
-
-        <!-- Game 1 -->
-        <div class="game-card">
-          <span class="game-badge">CONTRIBUTIONS</span>
-          <div class="game-icon">🐍</div>
-          <h3 class="game-name">Cyber Snake: Commits</h3>
-          <p class="game-desc">Consume green contribution nodes across the matrix grid. Grow your streak without
-            colliding with firewalls.</p>
-          <button class="launch-game-btn" data-game="snake">LAUNCH PROTOCOL ▶</button>
-        </div>
-
-        <!-- Game 2 -->
-        <div class="game-card">
-          <span class="game-badge">CRYPTOGRAPHY</span>
-          <div class="game-icon">🔓</div>
-          <h3 class="game-name">Terminal Breach</h3>
-          <p class="game-desc">Crack the mainframe's 4-digit hexadecimal security access key using deduction and parity
-            hints.</p>
-          <button class="launch-game-btn" data-game="breach">LAUNCH PROTOCOL ▶</button>
-        </div>
-
-        <!-- Game 3 -->
-        <div class="game-card">
-          <span class="game-badge">REFLEX</span>
-          <div class="game-icon">⚡</div>
-          <h3 class="game-name">Matrix Rain Runner</h3>
-          <p class="game-desc">Pilot a packet ship through a torrential cascade of digital glitches and corrupt data
-            streams.</p>
-          <button class="launch-game-btn" data-game="runner">LAUNCH PROTOCOL ▶</button>
-        </div>
-
-        <!-- Game 4 -->
-        <div class="game-card">
-          <span class="game-badge">NEURAL</span>
-          <div class="game-icon">🧠</div>
-          <h3 class="game-name">Memory Core Matrix</h3>
-          <p class="game-desc">High-tech Simon Says: memorize and repeat escalating sequences of firewall authorization
-            signals.</p>
-          <button class="launch-game-btn" data-game="memory">LAUNCH PROTOCOL ▶</button>
-        </div>
-
-        <!-- Game 5 -->
-        <div class="game-card">
-          <span class="game-badge">DEFENSE</span>
-          <div class="game-icon">🛡️</div>
-          <h3 class="game-name">DDoS Defense Blaster</h3>
-          <p class="game-desc">Intercept and neutralize incoming malicious SYN, UDP, and ACK packet swarms before they
-            compromise the core.</p>
-          <button class="launch-game-btn" data-game="ddos">LAUNCH PROTOCOL ▶</button>
-        </div>
-
-        <!-- Game 6 -->
-        <div class="game-card">
-          <span class="game-badge">CRYPTANALYSIS</span>
-          <div class="game-icon">🧩</div>
-          <h3 class="game-name">Cipher Decode Speedrun</h3>
-          <p class="game-desc">Decrypt scrambled cybersecurity terms and frameworks against a ticking 30-second
-            countdown clock.</p>
-          <button class="launch-game-btn" data-game="cipher">LAUNCH PROTOCOL ▶</button>
-        </div>
-
-        <!-- Game 7 -->
-        <div class="game-card">
-          <span class="game-badge">ARCADE</span>
-          <div class="game-icon">👾</div>
-          <h3 class="game-name">Cyber Invaders</h3>
-          <p class="game-desc">Retro space arcade shooter: deploy defensive pulse lasers to repel descending waves of
-            rogue AI daemons.</p>
-          <button class="launch-game-btn" data-game="invaders">LAUNCH PROTOCOL ▶</button>
-        </div>
-
-        <!-- Game 8 -->
-        <div class="game-card">
-          <span class="game-badge">PVP / AI</span>
-          <div class="game-icon">🏓</div>
-          <h3 class="game-name">Binary Pong vs AI</h3>
-          <p class="game-desc">Deflect high-speed neon cyber packets in an intense table battle against an adaptive
-            firewall daemon.</p>
-          <button class="launch-game-btn" data-game="pong">LAUNCH PROTOCOL ▶</button>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- TAB 2: AI AGENT INTERFACE -->
-    <section class="tab-content" id="tab-ai">
+    <!-- TAB 1: AI AGENT INTERFACE -->
+    <section class="tab-content active" id="tab-ai">
       <div class="ai-agent-layout">
 
         <!-- Left: Agent Avatar & Audio Visualizer -->
@@ -400,7 +264,6 @@
   <!-- Scripts -->
   <script src="app.js"></script>
   <script src="agent.js"></script>
-  <script src="games/games.js"></script>
 </body>
 
 </html>
