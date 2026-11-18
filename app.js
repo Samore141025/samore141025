@@ -658,6 +658,18 @@ onReady(() => {
       });
       el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
     });
+
+    document.querySelectorAll('.legend-card').forEach(card => {
+      card.addEventListener('click', () => {
+        window.cyberAudio.playSuccess();
+        card.style.borderColor = 'var(--text-cyan)';
+        card.style.boxShadow = '0 0 30px var(--text-cyan)';
+        setTimeout(() => {
+          card.style.borderColor = '';
+          card.style.boxShadow = '';
+        }, 500);
+      });
+    });
   }
 
   // Live System Telemetry Ticker Update

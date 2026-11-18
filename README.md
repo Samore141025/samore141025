@@ -22,20 +22,30 @@
 
 ---
 
+<h3>🚀 <a href="https://samore141025.github.io/samore141025/" target="_blank">&gt;&gt; CLICK HERE TO LAUNCH LIVE CYBER TERMINAL &amp; WORKSTATION &lt;&lt;</a></h3>
+
+<p>
+  <a href="https://samore141025.github.io/samore141025/" target="_blank">
+    <img src="https://img.shields.io/badge/🌐_LIVE_TERMINAL-samore141025.github.io%2Fsamore141025%2F-0e4429?style=for-the-badge&logo=googlechrome&logoColor=00ff41&labelColor=091220" alt="Live Cyber Terminal" />
+  </a>
+</p>
+
+---
+
 </div>
 
-### 🛡️ THE CODEX OF S.A.M.O.R.E.
+### 🛡️ [THE CODEX OF S.A.M.O.R.E.](https://samore141025.github.io/samore141025/#samore-matrix)
 
 > *"SAMORE is an engineering doctrine forged for the next era of cyber intelligence and autonomous computing."*
 
 | PROTOCOL | DOCTRINE PILLAR | CORE ARCHITECTURE & MISSION DIRECTIVE |
 | :---: | :--- | :--- |
-| 🟢 **`[ S ]`** | **SUSTAINABLE** | Resilient, low-energy AI architectures and green computing fault tolerance |
-| 🔵 **`[ A ]`** | **AUTOMATION** | Multi-agent defense swarms, autonomous CI/CD, and self-healing threat pipelines |
-| 🟡 **`[ M ]`** | **MANUFACTURING** | Industrial network infrastructure and high-reliability embedded systems (*Flash Electronics*) |
-| 🟣 **`[ O ]`** | **OPTIMIZATION** | Model quantization, low-latency edge inference, and optical flow hyper-tuning |
-| 🔷 **`[ R ]`** | **RESEARCH** | Space vision, remote sensing at *Bharatiya Antariksh Hackathon*, and *IEEE R&D* |
-| 🔴 **`[ E ]`** | **EXPANSION** | Enterprise scale with *Red Hat OpenShift AI 2.13* and global hackathon leadership |
+| 🟢 [**`[ S ]`**](https://samore141025.github.io/samore141025/#samore-matrix) | [**SUSTAINABLE**](https://samore141025.github.io/samore141025/#samore-matrix) | Resilient, low-energy AI architectures and green computing fault tolerance |
+| 🔵 [**`[ A ]`**](https://samore141025.github.io/samore141025/#samore-matrix) | [**AUTOMATION**](https://samore141025.github.io/samore141025/#samore-matrix) | Multi-agent defense swarms, autonomous CI/CD, and self-healing threat pipelines |
+| 🟡 [**`[ M ]`**](https://samore141025.github.io/samore141025/#samore-matrix) | [**MANUFACTURING**](https://samore141025.github.io/samore141025/#samore-matrix) | Industrial network infrastructure and high-reliability embedded systems (*Flash Electronics*) |
+| 🟣 [**`[ O ]`**](https://samore141025.github.io/samore141025/#samore-matrix) | [**OPTIMIZATION**](https://samore141025.github.io/samore141025/#samore-matrix) | Model quantization, low-latency edge inference, and optical flow hyper-tuning |
+| 🔷 [**`[ R ]`**](https://samore141025.github.io/samore141025/#samore-matrix) | [**RESEARCH**](https://samore141025.github.io/samore141025/#samore-matrix) | Space vision, remote sensing at *Bharatiya Antariksh Hackathon*, and *IEEE R&D* |
+| 🔴 [**`[ E ]`**](https://samore141025.github.io/samore141025/#samore-matrix) | [**EXPANSION**](https://samore141025.github.io/samore141025/#samore-matrix) | Enterprise scale with *Red Hat OpenShift AI 2.13* and global hackathon leadership |
 
 ---
 
