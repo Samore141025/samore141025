@@ -26,8 +26,8 @@ class SamoreAIAgent {
         response: "The SAMORE protocol is an engineering doctrine: S for Sustainable systems, A for Automation and multi-agent frameworks, M for Manufacturing and industrial technology, O for Optimization of models and networks, R for Research with IEEE and space vision, and E for Global Expansion."
       },
       {
-        keywords: ["cyber", "security", "hacking", "ceh", "shugo", "cti", "cth", "threat"],
-        response: "In Cybersecurity, Shrikant is trained as a Certified Ethical Hacker (CEH) with expertise in Penetration Testing, Malware Analysis, Web & Network Security, and Kali Linux. At SHUGO, he works on Cyber Threat Intelligence (CTI), Threat Hunting (CTH), Orchestration Defense, Multi-Agent Systems, and Guardian Intelligence."
+        keywords: ["cyber", "security", "hacking", "ceh", "shugo", "cti", "cth", "threat", "aviation", "defense"],
+        response: "In Cybersecurity and Defense Systems, Shrikant is trained as a Certified Ethical Hacker (CEH) with expertise in Penetration Testing, Malware Analysis, and Aviation Defense. At SHUGO, he focuses on Cyber Threat Intelligence (CTI), Threat Hunting (CTH), Orchestration Defense, Multi-Agent Swarm Systems, and Guardian Intelligence."
       },
       {
         keywords: ["ai", "machine learning", "ml", "deep learning", "tensorflow", "vision"],

@@ -9,14 +9,15 @@
  ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝
 </pre>
 
-<h1>⚡ SHRIKANT MORE // SAMORE</h1>
-<p><strong>AI/ML RESEARCHER • CYBER THREAT DEFENSE (SHUGO) • CERTIFIED ETHICAL HACKER (CEH)</strong></p>
+<h1>⚡ SHRIKANT MORE ⚡</h1>
+<p><strong>AI/ML RESEARCHER • CYBER THREAT DEFENSE (SHUGO) • AVIATION DEFENSE • CERTIFIED ETHICAL HACKER (CEH)</strong></p>
 
 <p>
   <img src="https://img.shields.io/badge/CLEARANCE-LEVEL_5_ROOT-0e4429?style=for-the-badge&logo=hackthebox&logoColor=00ff41&labelColor=091220" />
   <img src="https://img.shields.io/badge/CEH-CERTIFIED_ETHICAL_HACKER-800020?style=for-the-badge&logo=kalilinux&logoColor=ff0055&labelColor=091220" />
   <img src="https://img.shields.io/badge/OPENSHIFT-RED_HAT_AI_2.13-8b0000?style=for-the-badge&logo=redhatopenshift&logoColor=ff4444&labelColor=091220" />
   <img src="https://img.shields.io/badge/DEFENSE-SHUGO_INTELLIGENCE-003b5c?style=for-the-badge&logo=target&logoColor=00f0ff&labelColor=091220" />
+  <img src="https://img.shields.io/badge/AVIATION-DEFENSE_SYSTEMS-0b3c5d?style=for-the-badge&logo=airbus&logoColor=00f0ff&labelColor=091220" />
 </p>
 
 ---

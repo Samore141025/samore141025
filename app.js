@@ -510,7 +510,103 @@ class AutonomousContributionSnake {
   }
 }
 
-// 5. Main App Controller Initialization
+// 5. Hacker ASCII Decryption Engine (Pure Code Animation)
+class HackerAsciiEngine {
+  constructor() {
+    this.targetLines = [
+      " ███████╗ █████╗ ███╗   ███╗ ██████╗ ██████╗ ███████╗",
+      " ██╔════╝██╔══██╗████╗ ████║██╔═══██╗██╔══██╗██╔════╝",
+      " ███████╗███████║██╔████╔██║██║   ██║██████╔╝█████╗  ",
+      " ╚════██║██╔══██║██║╚██╔╝██║██║   ██║██╔══██╗██╔══╝  ",
+      " ███████║██║  ██║██║ ╚═╝ ██║╚██████╔╝██║  ██║███████╗",
+      " ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝"
+    ];
+    this.chars = "01$#*!@%&░▒▓█><=+";
+    this.el = null;
+    this.badge = null;
+    this.animating = false;
+  }
+
+  init() {
+    this.el = document.getElementById('asciiHackerArt');
+    this.badge = document.getElementById('asciiStatusBadge');
+    if (!this.el) return;
+
+    this.decrypt();
+
+    const container = document.getElementById('asciiTerminal');
+    if (container) {
+      container.addEventListener('mouseenter', () => {
+        if (!this.animating) {
+          window.cyberAudio.playGlitch();
+          this.decrypt();
+        }
+      });
+    }
+
+    setInterval(() => {
+      if (!this.animating && Math.random() > 0.4) {
+        this.decrypt();
+      }
+    }, 24000);
+  }
+
+  decrypt() {
+    if (this.animating || !this.el) return;
+    this.animating = true;
+    if (this.badge) {
+      this.badge.innerText = "● DECRYPTING CIPHER";
+      this.badge.style.color = "var(--text-cyan)";
+      this.badge.style.borderColor = "var(--border-cyan)";
+    }
+
+    const maxLen = Math.max(...this.targetLines.map(l => l.length));
+    let progressCol = 0;
+    const totalCols = maxLen;
+    const speed = 25;
+
+    const interval = setInterval(() => {
+      progressCol += 2;
+      let displayLines = [];
+
+      for (let r = 0; r < this.targetLines.length; r++) {
+        const line = this.targetLines[r];
+        let str = "";
+        for (let c = 0; c < line.length; c++) {
+          const char = line[c];
+          if (c < progressCol) {
+            str += char;
+          } else if (char === " ") {
+            str += " ";
+          } else {
+            str += this.chars[Math.floor(Math.random() * this.chars.length)];
+          }
+        }
+        displayLines.push(str);
+      }
+
+      this.el.innerText = displayLines.join("\n");
+
+      if (progressCol % 6 === 0) {
+        window.cyberAudio.playBeep(900 + (progressCol * 12), 'sawtooth', 0.02, 0.02);
+      }
+
+      if (progressCol >= totalCols + 8) {
+        clearInterval(interval);
+        this.el.innerText = this.targetLines.join("\n");
+        this.animating = false;
+        if (this.badge) {
+          this.badge.innerText = "● ROOT ACCESS GRANTED";
+          this.badge.style.color = "var(--text-primary)";
+          this.badge.style.borderColor = "var(--border-neon)";
+        }
+        window.cyberAudio.playSuccess();
+      }
+    }, speed);
+  }
+}
+
+// 6. Main App Controller Initialization
 onReady(() => {
   // Initialize Audio
   const initAudio = () => {
@@ -541,6 +637,10 @@ onReady(() => {
   // Initialize Autonomous Snake Simulator
   const snakeSim = new AutonomousContributionSnake();
   snakeSim.init();
+
+  // Initialize Hacker ASCII Decryption Engine
+  const asciiEngine = new HackerAsciiEngine();
+  asciiEngine.init();
 
   // Custom Cursor Tracking & Full-Page Audio Feedback
   const cursor = document.getElementById('custom-cursor');
@@ -575,10 +675,10 @@ onReady(() => {
   const morphElement = document.getElementById('morphingName');
   if (morphElement) {
     const states = [
-      "SHRIKANT MORE",
-      "S A M O R E",
-      "[ S.A.M.O.R.E. ]",
-      "SHRIKANT MORE"
+      "⚡ SHRIKANT MORE ⚡",
+      "⚡ S A M O R E ⚡",
+      "⚡ [ S.A.M.O.R.E. ] ⚡",
+      "⚡ SHRIKANT MORE ⚡"
     ];
     const glyphs = "!<>-_\\/[]{}—=+*^?#________010101";
     let stateIdx = 0;
