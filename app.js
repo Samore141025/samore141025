@@ -650,7 +650,7 @@ onReady(() => {
       cursor.style.top = `${e.clientY}px`;
     });
 
-    const hoverElements = 'button, a, input, .legend-card, .prompt-chip, .tab-btn';
+    const hoverElements = 'button, a, input, .legend-card, .prompt-chip, .tab-btn, .cyber-role-badge';
     document.querySelectorAll(hoverElements).forEach(el => {
       el.addEventListener('mouseenter', () => {
         cursor.classList.add('active');

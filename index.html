@@ -48,11 +48,14 @@
       </div>
     </div>
     <div class="hud-right">
-      <button class="hud-btn" id="matrixToggleBtn">🌧️ MATRIX: ON</button>
-      <button class="hud-btn" id="scanlineToggleBtn">⚡ CRT: ON</button>
-      <button class="hud-btn" id="soundToggleBtn">🔊 AUDIO: ONLINE</button>
+      <button class="hud-btn" id="themeToggleBtn">🎨 PALETTE: MATRIX</button>
+      <button class="hud-btn" id="radioToggleBtn">📻 RADIO: OFF</button>
+      <button class="hud-btn" id="exportResumeBtn">📥 ATS DOSSIER</button>
+      <button class="hud-btn" id="cliToggleBtn" style="border-color:var(--border-cyan); color:var(--text-cyan);">&gt;_ TERMINAL</button>
+      <button class="hud-btn" id="matrixToggleBtn">🌧️ MATRIX</button>
+      <button class="hud-btn" id="soundToggleBtn">🔊 AUDIO</button>
       <a href="https://github.com/Samore141025" target="_blank" class="hud-btn" style="text-decoration: none;">
-        <span>GITHUB PROFILE ↗</span>
+        <span>GITHUB ↗</span>
       </a>
     </div>
   </header>
@@ -68,9 +71,20 @@
         <h1 class="morphing-title" id="morphingName">⚡ SHRIKANT MORE ⚡</h1>
       </div>
 
-      <!-- Static Unclickable Identity Subtitle -->
-      <div class="hero-role-subtitle">
-        AI/ML RESEARCHER • CYBER THREAT DEFENSE (SHUGO) • AVIATION DEFENSE • CERTIFIED ETHICAL HACKER (CEH)
+      <!-- Unclickable Futuristic Role Pill Button with Background Animation & Hover Effect -->
+      <div class="cyber-role-badge" id="cyberRoleBadge">
+        <span class="cyber-role-bracket">[</span>
+        <span class="cyber-role-text">AI/ML RESEARCHER • CYBER THREAT DEFENSE (SHUGO) • DEFENSE AVIATION • CERTIFIED ETHICAL HACKER (CEH)</span>
+        <span class="cyber-role-bracket">]</span>
+        <div class="cyber-role-shimmer"></div>
+      </div>
+
+      <!-- Interactive Cryptographic Certifications Bar -->
+      <div class="cert-badges-bar">
+        <button class="verify-cert-trigger" data-cert="ceh" title="Inspect EC-Council Credential"><span>🛡️</span> [ CEH VERIFIED ]</button>
+        <button class="verify-cert-trigger" data-cert="openshift" title="Inspect Red Hat AI262F Credential"><span>🔴</span> [ RED HAT AI 2.13 ]</button>
+        <button class="verify-cert-trigger" data-cert="shugo" title="Inspect SHUGO Intelligence Clearance"><span>⚡</span> [ SHUGO CTI / CTH ]</button>
+        <button class="verify-cert-trigger" data-cert="aviation" title="Inspect Aerospace Vision Credentials"><span>✈️</span> [ DEFENSE AVIATION ]</button>
       </div>
 
       <!-- Animated Hacker ASCII Deck (Pure Code Animation) -->
@@ -160,16 +174,111 @@
 
     <!-- Navigation Tabs -->
     <nav class="cyber-tabs">
-      <button class="tab-btn active" data-tab="tab-ai">🤖 SAMORE-AI VOICE AGENT</button>
+      <button class="tab-btn active" data-tab="tab-aerospace">🛰️ AEROSPACE &amp; AI PLAYGROUND</button>
+      <button class="tab-btn" data-tab="tab-radar">🛡️ SHUGO THREAT RADAR &amp; CLUSTER</button>
+      <button class="tab-btn" data-tab="tab-ai">🤖 SAMORE-AI VOICE AGENT</button>
       <button class="tab-btn" data-tab="tab-contact">📡 TRANSMISSION UPLINK</button>
     </nav>
 
+    <!-- TAB 1: AEROSPACE & AI PLAYGROUND -->
+    <section class="tab-content active" id="tab-aerospace">
+      <div class="tech-split-grid">
 
+        <!-- 3D Aerospace Wireframe -->
+        <div class="tech-panel-card">
+          <div class="panel-header-bar">
+            <div class="panel-heading">🛰️ 3D DEFENSE AEROSPACE SATELLITE</div>
+            <div style="font-size: 11px; color: var(--text-cyan); font-family: var(--font-mono);">[DRAG TO ORBIT]</div>
+          </div>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px; line-height: 1.5;">
+            Real-time 3D vector wireframe projection of orbital defense satellite with dynamic pitch, yaw, and telemetry tracking.
+          </p>
+          <div class="aerospace-canvas-wrap">
+            <canvas id="aerospaceCanvas"></canvas>
+          </div>
+        </div>
 
+        <!-- AI Computer Vision & Optical Flow Simulator -->
+        <div class="tech-panel-card">
+          <div class="panel-header-bar">
+            <div class="panel-heading">🧠 SATELLITE OPTICAL FLOW &amp; DETECTION</div>
+            <div style="display: flex; gap: 8px;">
+              <button class="hud-btn active" id="cvToggleVectors" style="padding: 3px 8px; font-size: 10px;">VECTORS</button>
+              <button class="hud-btn active" id="cvToggleBBoxes" style="padding: 3px 8px; font-size: 10px;">B-BOXES</button>
+            </div>
+          </div>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px; line-height: 1.5;">
+            Simulated optical flow motion vector estimation and deep learning bounding box detection (Bharatiya Antariksh Hackathon pipeline).
+          </p>
+          <div class="cv-canvas-wrap">
+            <canvas id="cvCanvas"></canvas>
+          </div>
+        </div>
 
+      </div>
+    </section>
 
-    <!-- TAB 1: AI AGENT INTERFACE -->
-    <section class="tab-content active" id="tab-ai">
+    <!-- TAB 2: SHUGO THREAT RADAR & CLUSTER -->
+    <section class="tab-content" id="tab-radar">
+      <div class="tech-split-grid">
+
+        <!-- Global Threat Radar -->
+        <div class="tech-panel-card">
+          <div class="panel-header-bar">
+            <div class="panel-heading">📡 SHUGO GLOBAL THREAT RADAR</div>
+            <div style="font-size: 11px; color: var(--text-primary); font-family: var(--font-mono);">INTERCEPTED: <span id="radarBlockedCount">5,240</span></div>
+          </div>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px; line-height: 1.5;">
+            Autonomous radar sweep detecting, vectoring, and nullifying simulated SYN floods, brute force probes, and malicious packet swarms.
+          </p>
+          <div class="radar-canvas-wrap">
+            <canvas id="threatRadarCanvas"></canvas>
+          </div>
+        </div>
+
+        <!-- OpenShift AI Cluster Architecture -->
+        <div class="tech-panel-card">
+          <div class="panel-header-bar">
+            <div class="panel-heading">🔴 RED HAT OPENSHIFT AI 2.13 TOPOLOGY</div>
+            <div style="font-size: 11px; color: var(--text-cyan); font-family: var(--font-mono);">[SELECT NODE TO PROBE]</div>
+          </div>
+          <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 12px; line-height: 1.5;">
+            Interactive Kubernetes pod mesh orchestrating distributed TensorFlow models, GPU inference, and multi-agent defense daemons.
+          </p>
+          <div class="cluster-topology-grid">
+            <div class="cluster-node selected" data-title="K8S_INGRESS_GATEWAY" data-role="Edge TLS Termination &amp; Routing" data-pods="12 Replicas" data-cpu="18.2%" data-status="HEALTHY">
+              <div class="cluster-node-name">INGRESS</div>
+              <div class="cluster-node-tag">Edge Gateway</div>
+            </div>
+            <div class="cluster-node" data-title="OPENSHIFT_AI_CONTROL" data-role="Red Hat OpenShift AI (RHA 2.13)" data-pods="8 Workers" data-cpu="34.6%" data-status="OPERATIONAL">
+              <div class="cluster-node-name">AI_CONTROL</div>
+              <div class="cluster-node-tag">Control Plane</div>
+            </div>
+            <div class="cluster-node" data-title="TENSORFLOW_INFERENCE" data-role="GPU Model Inference &amp; Vision" data-pods="24 Pods" data-cpu="62.4%" data-status="OPTIMIZED">
+              <div class="cluster-node-name">GPU_INFER</div>
+              <div class="cluster-node-tag">TensorFlow GPU</div>
+            </div>
+            <div class="cluster-node" data-title="SHUGO_AGENT_SWARM" data-role="Autonomous Cyber Threat Hunters" data-pods="32 Daemons" data-cpu="22.1%" data-status="ACTIVE">
+              <div class="cluster-node-name">SHUGO_SWARM</div>
+              <div class="cluster-node-tag">Multi-Agent</div>
+            </div>
+          </div>
+          <div id="clusterNodeInfo" style="margin-top: 16px; background: rgba(5,10,20,0.9); border: 1px solid var(--border-dim); padding: 14px; border-radius: 4px;">
+            <div style="font-family:var(--font-cyber); font-size:15px; color:var(--text-cyan); margin-bottom:8px;">K8S_INGRESS_GATEWAY</div>
+            <div style="font-size:12px; color:var(--text-muted); line-height:1.6;">
+              <div>&gt; ROLE: <span style="color:#fff">Edge TLS Termination &amp; Routing</span></div>
+              <div>&gt; ACTIVE PODS: <span style="color:var(--text-primary)">12 Replicas</span></div>
+              <div>&gt; COMPUTE LOAD: <span style="color:var(--text-cyan)">18.2%</span></div>
+              <div>&gt; WATCHDOG: <span style="color:#00ff41">HEALTHY</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TAB 3: AI AGENT INTERFACE -->
+    <section class="tab-content" id="tab-ai">
       <div class="ai-agent-layout">
 
         <!-- Left: Agent Avatar & Audio Visualizer -->
@@ -285,9 +394,107 @@
     SAMORE PROTOCOL // DESIGNED FOR SHRIKANT MORE // ENCRYPTED &amp; OPERATIONAL
   </footer>
 
+  <!-- Holographic Certification Verification Modal (Feature 8) -->
+  <div class="holo-modal" id="certModal">
+    <div class="holo-modal-card">
+      <div class="holo-modal-header">
+        <div style="font-family: var(--font-cyber); font-size: 16px; color: var(--text-cyan);" id="certModalTitle">
+          CREDENTIAL VERIFICATION
+        </div>
+        <button class="close-modal-btn" id="closeCertBtn">✕ CLOSE</button>
+      </div>
+      <div class="holo-field">
+        <div class="holo-label">&gt; ISSUING AUTHORITY:</div>
+        <div class="holo-val" id="certModalIssuer">EC-Council / EduSkills Academy</div>
+      </div>
+      <div class="holo-field">
+        <div class="holo-label">&gt; CREDENTIAL IDENTIFIER:</div>
+        <div class="holo-val" style="font-family: var(--font-mono); color: var(--text-primary);" id="certModalId">AUTH-CEH-EDU-141025</div>
+      </div>
+      <div class="holo-field">
+        <div class="holo-label">&gt; CRYPTOGRAPHIC STATUS:</div>
+        <div class="holo-val" style="color: #00ff41;" id="certModalStatus">CRYPTOGRAPHICALLY VERIFIED</div>
+      </div>
+      <div class="holo-field">
+        <div class="holo-label">&gt; VERIFIED CAPABILITIES &amp; SCOPE:</div>
+        <div class="holo-val" id="certModalSkills" style="font-size: 12.5px; line-height: 1.5; color: var(--text-muted);">
+          Penetration Testing, Vulnerability Assessment, Kali Linux, Malware Analysis
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ATS Printable Resume Modal (Feature 7) -->
+  <div class="holo-modal" id="resumeModal">
+    <div class="holo-modal-card">
+      <div class="holo-modal-header">
+        <div style="font-family: var(--font-cyber); font-size: 16px; color: var(--text-primary);">
+          📄 SHRIKANT MORE // ATS DOSSIER (OFFICIAL RESUME)
+        </div>
+        <div style="display: flex; gap: 10px;">
+          <button class="hud-btn" id="printResumeBtn" style="padding: 4px 10px; font-size: 11px;">🖨️ PRINT / PDF</button>
+          <button class="close-modal-btn" id="closeResumeBtn">✕ CLOSE</button>
+        </div>
+      </div>
+      <div class="resume-modal-body">
+        <h2 style="font-family: var(--font-cyber); color: #fff; font-size: 20px;">SHRIKANT MORE</h2>
+        <div style="color: var(--text-cyan); font-size: 13px; margin-bottom: 8px;">
+          AI/ML Researcher • Certified Ethical Hacker (CEH) • Defense Aviation
+        </div>
+        <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 16px;">
+          Pune, Maharashtra, India • shrikantashokmore@gmail.com • linkedin.com/in/samore141025 • github.com/Samore141025
+        </div>
+
+        <div class="resume-section-title">CORE CAPABILITIES</div>
+        <div style="font-size: 12.5px; line-height: 1.6;">
+          • <strong>AI &amp; Computer Vision:</strong> Deep Learning, TensorFlow, Optical Flow, Satellite Image Processing, Generative AI, Cloud Run.<br/>
+          • <strong>Cyber Threat Intelligence:</strong> CEH Certified, Kali Linux, Penetration Testing, SHUGO CTI/CTH Swarm Defense.<br/>
+          • <strong>Cloud &amp; Infrastructure:</strong> Red Hat OpenShift AI 2.13 (AI262F), AWS Cloud Practitioner, Linux SysAdmin.
+        </div>
+
+        <div class="resume-section-title">EXPERIENCE &amp; MILESTONES</div>
+        <div style="font-size: 12.5px; line-height: 1.6;">
+          • <strong>SHUGO (Cyber Threat Intelligence Researcher):</strong> Multi-agent swarm defense orchestration and threat hunting.<br/>
+          • <strong>EduSkills Academy (AI-ML &amp; Ethical Hacking Intern):</strong> TensorFlow computer vision &amp; network security audit.<br/>
+          • <strong>Flash Electronics India Pvt Ltd (Network &amp; IT Intern):</strong> Enterprise routing, system administration, SAP workflows.<br/>
+          • <strong>Bharatiya Antariksh Hackathon:</strong> Satellite image optical flow and remote sensing pipelines.<br/>
+          • <strong>Google Cloud GenAI Academy APAC:</strong> Cloud Run generative AI pipelines.
+        </div>
+
+        <div class="resume-section-title">LEADERSHIP &amp; EDUCATION</div>
+        <div style="font-size: 12.5px; line-height: 1.6;">
+          • <strong>ACES NMIET:</strong> Student Coordinator Head spearheading organizational technical drives.<br/>
+          • <strong>IEEE Member:</strong> Active R&amp;D participant in engineering publications and technical hackathons.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Floating CLI Terminal Shell (Feature 2) -->
+  <div id="cliTerminalDrawer">
+    <div class="cli-header">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span class="t-dot dot-green"></span>
+        <span style="color: #fff; font-weight: 700;">SHUGO_ROOT_SHELL // v2.6.4</span>
+      </div>
+      <div style="display: flex; gap: 8px; align-items: center;">
+        <span style="font-size: 11px; color: var(--text-muted);">&gt; PRESS ` TO TOGGLE</span>
+        <button class="close-modal-btn" id="closeCliBtn" style="padding: 2px 6px; font-size: 10px;">✕</button>
+      </div>
+    </div>
+    <div class="cli-body" id="cliTerminalOutput">
+      <div class="cli-line cli-prompt">SHUGO DEFENSE SHELL INITIALIZED. Type 'help' for command manual.</div>
+    </div>
+    <div class="cli-input-line">
+      <span>shrikant@shugo-root:~#</span>
+      <input type="text" class="cli-input" id="cliTerminalInput" placeholder="Enter command (e.g. whoami, nmap, skills, theme)..." autocomplete="off" spellcheck="false" />
+    </div>
+  </div>
+
   <!-- Scripts -->
   <script src="app.js"></script>
   <script src="agent.js"></script>
+  <script src="cyber-suite.js"></script>
 </body>
 
 </html>
