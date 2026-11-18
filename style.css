@@ -46,6 +46,13 @@
   text-shadow: none !important;
 }
 
+pre, .morphing-title, .legend-letter, .avatar-icon, .game-icon {
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+}
+
 mark {
   background: #00f0ff;
   color: #000000;

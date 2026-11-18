@@ -1,16 +1,16 @@
 <div align="center">
 
-```
+<pre align="center">
  ███████╗ █████╗ ███╗   ███╗ ██████╗ ██████╗ ███████╗
  ██╔════╝██╔══██╗████╗ ████║██╔═══██╗██╔══██╗██╔════╝
  ███████╗███████║██╔████╔██║██║   ██║██████╔╝█████╗  
  ╚════██║██╔══██║██║╚██╔╝██║██║   ██║██╔══██╗██╔══╝  
  ███████║██║  ██║██║ ╚═╝ ██║╚██████╔╝██║  ██║███████╗
  ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝
-```
+</pre>
 
-# ⚡ SHRIKANT MORE // SAMORE
-### `> AI/ML RESEARCHER • CYBER THREAT DEFENSE (SHUGO) • CERTIFIED ETHICAL HACKER (CEH)`
+<h1>⚡ SHRIKANT MORE // SAMORE</h1>
+<p><strong>AI/ML RESEARCHER • CYBER THREAT DEFENSE (SHUGO) • CERTIFIED ETHICAL HACKER (CEH)</strong></p>
 
 <p>
   <img src="https://img.shields.io/badge/CLEARANCE-LEVEL_5_ROOT-0e4429?style=for-the-badge&logo=hackthebox&logoColor=00ff41&labelColor=091220" />
@@ -21,8 +21,8 @@
 
 ---
 
-### 🚀 [>> CLICK HERE TO LAUNCH LIVE CYBER TERMINAL & ARCADE <<](https://samore141025.github.io/samore141025/)
-*Featuring digital Matrix Rain, real-time autonomous snake AI, speaking voice AI agent, and 8 playable cyber mini-games.*
+<h3>🚀 <a href="https://samore141025.github.io/samore141025/" target="_blank">&gt;&gt; CLICK HERE TO LAUNCH LIVE CYBER TERMINAL &amp; ARCADE &lt;&lt;</a></h3>
+<p><em>Featuring digital Matrix Rain, real-time autonomous snake AI, speaking voice AI agent, and 8 playable cyber mini-games.</em></p>
 
 ---
 
@@ -93,14 +93,14 @@ You can launch and play all 8 games directly in the companion **[Cyber-Deck Term
 
 | CHANNEL | DESTINATION | STATUS | TRANSMISSION UPLINK |
 | :--- | :--- | :---: | :---: |
-| ✉️ **Encrypted Email** | `shrikantashokmore@gmail.com` | `● ONLINE` | [**Transmit Email ↗**](mailto:shrikantashokmore@gmail.com) |
+| ✉️ **Google Mail** | `shrikantashokmore@gmail.com` | `● ONLINE` | [**Compose in Gmail ↗**](https://mail.google.com/mail/?view=cm&fs=1&to=shrikantashokmore@gmail.com) |
 | 💼 **LinkedIn Network** | `linkedin.com/in/samore141025` | `● VERIFIED` | [**Connect on LinkedIn ↗**](https://www.linkedin.com/in/samore141025/) |
 | 💻 **GitHub Protocol** | `github.com/Samore141025` | `● ACTIVE` | [**View GitHub Profile ↗**](https://github.com/Samore141025) |
 
 <br/>
 
-<a href="mailto:shrikantashokmore@gmail.com">
-  <img src="https://img.shields.io/badge/ENCRYPTED_EMAIL-shrikantashokmore%40gmail.com-0e4429?style=for-the-badge&logo=gmail&logoColor=00ff41&labelColor=091220" alt="Direct Email" />
+<a href="https://mail.google.com/mail/?view=cm&fs=1&to=shrikantashokmore@gmail.com" target="_blank">
+  <img src="https://img.shields.io/badge/GMAIL-shrikantashokmore%40gmail.com-0e4429?style=for-the-badge&logo=gmail&logoColor=00ff41&labelColor=091220" alt="Direct Gmail Compose" />
 </a>
 &nbsp;&nbsp;
 <a href="https://www.linkedin.com/in/samore141025/" target="_blank">
