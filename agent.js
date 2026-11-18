@@ -289,7 +289,15 @@ class SamoreAIAgent {
   }
 }
 
+function onReady(fn) {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', fn);
+  } else {
+    fn();
+  }
+}
+
 window.samoreAI = new SamoreAIAgent();
-document.addEventListener('DOMContentLoaded', () => {
+onReady(() => {
   window.samoreAI.init();
 });

@@ -1,5 +1,5 @@
 /**
- * SAMORE // 8-GAME DYNAMIC CYBER ARCADE SUITE
+ * SAMORE // 8-GAME DYNAMIC CYBER ARCADE SUITE (ENHANCED)
  * Target: Shrikant More (@Samore141025)
  * Games:
  * 1. Cyber Snake (Matrix Commits Edition)
@@ -12,6 +12,14 @@
  * 8. Binary Pong (Neon Firewall Pong)
  */
 
+function onReady(fn) {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', fn);
+  } else {
+    fn();
+  }
+}
+
 class CyberArcade {
   constructor() {
     this.canvas = null;
@@ -19,16 +27,8 @@ class CyberArcade {
     this.currentGame = null;
     this.loopId = null;
     this.score = 0;
-    this.highScores = {
-      snake: 0,
-      breach: 0,
-      runner: 0,
-      memory: 0,
-      ddos: 0,
-      cipher: 0,
-      invaders: 0,
-      pong: 0
-    };
+    this.cleanupHandler = null;
+    this.inputBridge = null; // Bridge to pass virtual d-pad input to active game
   }
 
   init() {
@@ -37,11 +37,12 @@ class CyberArcade {
       this.ctx = this.canvas.getContext('2d');
     }
     this.bindEvents();
+    this.bindVirtualControls();
   }
 
   bindEvents() {
     document.querySelectorAll('.launch-game-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
+      btn.addEventListener('click', () => {
         const gameId = btn.getAttribute('data-game');
         this.launchGame(gameId);
       });
@@ -53,6 +54,7 @@ class CyberArcade {
         this.stopCurrentGame();
         const arena = document.getElementById('game-arena');
         if (arena) arena.classList.remove('active');
+        window.cyberAudio.playClick();
       });
     }
 
@@ -61,9 +63,33 @@ class CyberArcade {
       restartBtn.addEventListener('click', () => {
         if (this.currentGame) {
           this.launchGame(this.currentGame);
+          window.cyberAudio.playClick();
         }
       });
     }
+  }
+
+  bindVirtualControls() {
+    document.querySelectorAll('.v-btn').forEach(btn => {
+      const sendKey = (isDown) => {
+        const key = btn.getAttribute('data-key');
+        if (!key) return;
+
+        // Dispatch synthetic keyboard events so all games respond to touch/click
+        const ev = new KeyboardEvent(isDown ? 'keydown' : 'keyup', {
+          code: key,
+          key: key,
+          bubbles: true
+        });
+        window.dispatchEvent(ev);
+        if (isDown) window.cyberAudio.playClick();
+      };
+
+      btn.addEventListener('mousedown', (e) => { e.preventDefault(); sendKey(true); });
+      btn.addEventListener('mouseup', (e) => { e.preventDefault(); sendKey(false); });
+      btn.addEventListener('touchstart', (e) => { e.preventDefault(); sendKey(true); });
+      btn.addEventListener('touchend', (e) => { e.preventDefault(); sendKey(false); });
+    });
   }
 
   stopCurrentGame() {
@@ -72,7 +98,6 @@ class CyberArcade {
       clearInterval(this.loopId);
       this.loopId = null;
     }
-    // Clean up event listeners if any attached to window
     if (this.cleanupHandler) {
       this.cleanupHandler();
       this.cleanupHandler = null;
@@ -84,19 +109,25 @@ class CyberArcade {
     this.currentGame = gameId;
     this.score = 0;
 
+    // Refresh canvas reference
+    this.canvas = document.getElementById('activeGameCanvas');
+    if (this.canvas) {
+      this.ctx = this.canvas.getContext('2d');
+      this.canvas.width = 720;
+      this.canvas.height = 420;
+    }
+
     const arena = document.getElementById('game-arena');
     if (arena) {
       arena.classList.add('active');
-      arena.scrollIntoView({ behavior: 'smooth' });
+      arena.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 
     const titleEl = document.getElementById('arenaGameTitle');
     const scoreEl = document.getElementById('arenaScore');
     if (scoreEl) scoreEl.innerText = '0';
 
-    // Set canvas dimensions
-    this.canvas.width = 720;
-    this.canvas.height = 420;
+    window.cyberAudio.playSuccess();
 
     switch (gameId) {
       case 'snake':
@@ -112,7 +143,7 @@ class CyberArcade {
         this.runRunner();
         break;
       case 'memory':
-        if (titleEl) titleEl.innerText = 'MEMORY CORE // SIMON SAYS MAIN-FRAME';
+        if (titleEl) titleEl.innerText = 'MEMORY CORE // SIMON SAYS MAINFRAME';
         this.runMemory();
         break;
       case 'ddos':
@@ -154,16 +185,16 @@ class CyberArcade {
     ];
     let dx = 1;
     let dy = 0;
-    let food = { x: 18, y: 10 };
+    let food = { x: 20, y: 10 };
     let gameOver = false;
-    let speed = 90; // ms
+    let speed = 90;
 
-    function spawnFood() {
+    const spawnFood = () => {
       food = {
         x: Math.floor(Math.random() * (canvas.width / gridSize)),
         y: Math.floor(Math.random() * (canvas.height / gridSize))
       };
-    }
+    };
 
     const keyHandler = (e) => {
       if (['ArrowUp', 'KeyW'].includes(e.code) && dy === 0) { dx = 0; dy = -1; }
@@ -194,6 +225,9 @@ class CyberArcade {
           ctx.font = '24px Orbitron';
           ctx.textAlign = 'center';
           ctx.fillText('SYSTEM BREACH: GAME OVER', canvas.width / 2, canvas.height / 2);
+          ctx.font = '14px monospace';
+          ctx.fillStyle = '#fff';
+          ctx.fillText('Press [RESTART] or choose another protocol', canvas.width / 2, canvas.height / 2 + 35);
           return;
         }
       }
@@ -210,11 +244,11 @@ class CyberArcade {
       }
 
       // Render
-      ctx.fillStyle = '#060a12';
+      ctx.fillStyle = '#060a14';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // Grid lines
-      ctx.strokeStyle = 'rgba(0, 255, 65, 0.05)';
+      ctx.strokeStyle = 'rgba(0, 255, 65, 0.08)';
       for (let x = 0; x < canvas.width; x += gridSize) {
         ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); ctx.stroke();
       }
@@ -231,7 +265,7 @@ class CyberArcade {
       // Render Snake
       snake.forEach((part, idx) => {
         ctx.fillStyle = idx === 0 ? '#00f0ff' : '#26a641';
-        ctx.shadowBlur = idx === 0 ? 8 : 2;
+        ctx.shadowBlur = idx === 0 ? 10 : 3;
         ctx.shadowColor = idx === 0 ? '#00f0ff' : '#00ff41';
         ctx.fillRect(part.x * gridSize + 2, part.y * gridSize + 2, gridSize - 4, gridSize - 4);
       });
@@ -250,7 +284,6 @@ class CyberArcade {
     const canvas = this.canvas;
     const hexChars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
     
-    // Generate 4-character hex target
     const target = Array.from({ length: 4 }, () => hexChars[Math.floor(Math.random() * hexChars.length)]).join('');
     let attempts = [];
     let currentInput = '';
@@ -258,30 +291,28 @@ class CyberArcade {
     let won = false;
 
     const render = () => {
-      ctx.fillStyle = '#050811';
+      ctx.fillStyle = '#050814';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       ctx.fillStyle = '#00f0ff';
-      ctx.font = '16px Orbitron';
+      ctx.font = '18px Orbitron';
       ctx.fillText('SECURITY MAINFRAME // DECRYPT 4-DIGIT HEX KEY', 30, 40);
 
-      ctx.fillStyle = '#8b949e';
-      ctx.font = '13px "Share Tech Mono"';
-      ctx.fillText(`ATTEMPTS REMAINING: ${maxAttempts - attempts.length} | VALID CHARS: 0-9, A-F`, 30, 65);
+      ctx.fillStyle = '#c5d1de';
+      ctx.font = '14px "Share Tech Mono"';
+      ctx.fillText(`ATTEMPTS REMAINING: ${maxAttempts - attempts.length} | VALID CHARS: 0-9, A-F`, 30, 68);
 
-      // Draw Attempts History
-      let startY = 100;
+      let startY = 105;
       attempts.forEach((item, idx) => {
-        ctx.fillStyle = item.won ? '#00ff41' : '#e2e8f0';
+        ctx.fillStyle = item.won ? '#00ff41' : '#ffffff';
         ctx.font = '20px monospace';
-        ctx.fillText(`LOG [${idx + 1}]: ${item.guess} -> ${item.feedback}`, 30, startY + idx * 30);
+        ctx.fillText(`LOG [${idx + 1}]: ${item.guess} -> ${item.feedback}`, 30, startY + idx * 32);
       });
 
-      // Current input prompt
       if (!won && attempts.length < maxAttempts) {
         ctx.fillStyle = '#00ff41';
         ctx.font = '22px monospace';
-        ctx.fillText(`ENTER KEY > ${currentInput}_`, 30, startY + attempts.length * 30);
+        ctx.fillText(`ENTER KEY > ${currentInput}_`, 30, startY + attempts.length * 32);
       }
 
       if (won) {
@@ -309,13 +340,12 @@ class CyberArcade {
       } else if (e.key === 'Backspace') {
         currentInput = currentInput.slice(0, -1);
         render();
-      } else if (e.key === 'Enter' && currentInput.length === 4) {
+      } else if ((e.key === 'Enter' || e.code === 'Space') && currentInput.length === 4) {
         let correctPlace = 0;
         let correctChar = 0;
         let tempTarget = target.split('');
         let tempGuess = currentInput.split('');
 
-        // Exact matches
         tempGuess.forEach((char, i) => {
           if (char === tempTarget[i]) {
             correctPlace++;
@@ -324,7 +354,6 @@ class CyberArcade {
           }
         });
 
-        // Misplaced matches
         tempGuess.forEach((char) => {
           if (char !== '#' && tempTarget.includes(char)) {
             correctChar++;
@@ -360,7 +389,7 @@ class CyberArcade {
   runRunner() {
     const ctx = this.ctx;
     const canvas = this.canvas;
-    let player = { x: canvas.width / 2, y: canvas.height - 40, size: 24, speed: 7 };
+    let player = { x: canvas.width / 2, y: canvas.height - 40, size: 24, speed: 8 };
     let obstacles = [];
     let keys = {};
     let score = 0;
@@ -376,32 +405,27 @@ class CyberArcade {
     };
 
     let spawnTimer = 0;
-
     const loop = () => {
       if (gameOver) return;
 
-      // Update Player
       if ((keys['ArrowLeft'] || keys['KeyA']) && player.x > player.size) player.x -= player.speed;
       if ((keys['ArrowRight'] || keys['KeyD']) && player.x < canvas.width - player.size) player.x += player.speed;
 
-      // Spawn obstacles (Falling Glitches)
       spawnTimer++;
-      if (spawnTimer % 20 === 0) {
+      if (spawnTimer % 18 === 0) {
         obstacles.push({
           x: Math.random() * (canvas.width - 40) + 20,
           y: -20,
-          size: Math.random() * 20 + 15,
+          size: Math.random() * 20 + 16,
           speed: Math.random() * 3 + 4,
-          char: ['0', '1', '!', 'X', 'ERR'][Math.floor(Math.random() * 5)]
+          char: ['0', '1', '!', 'X', 'ERR', '0x7F'][Math.floor(Math.random() * 6)]
         });
       }
 
-      // Update Obstacles
       for (let i = obstacles.length - 1; i >= 0; i--) {
         const obs = obstacles[i];
         obs.y += obs.speed;
 
-        // Collision Check
         const dist = Math.hypot(player.x - obs.x, player.y - obs.y);
         if (dist < player.size + obs.size / 2) {
           gameOver = true;
@@ -420,22 +444,19 @@ class CyberArcade {
         }
       }
 
-      // Render
-      ctx.fillStyle = 'rgba(4, 7, 14, 0.35)'; // Motion trail
+      ctx.fillStyle = 'rgba(5, 8, 16, 0.4)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Render Obstacles
       obstacles.forEach(obs => {
         ctx.fillStyle = '#ff0055';
-        ctx.shadowBlur = 8;
+        ctx.shadowBlur = 10;
         ctx.shadowColor = '#ff0055';
-        ctx.font = `${obs.size}px monospace`;
+        ctx.font = `bold ${obs.size}px monospace`;
         ctx.fillText(obs.char, obs.x, obs.y);
       });
 
-      // Render Player Ship
       ctx.fillStyle = '#00f0ff';
-      ctx.shadowBlur = 12;
+      ctx.shadowBlur = 14;
       ctx.shadowColor = '#00f0ff';
       ctx.beginPath();
       ctx.moveTo(player.x, player.y - player.size);
@@ -473,22 +494,22 @@ class CyberArcade {
       ctx.fillStyle = '#060a14';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      ctx.fillStyle = '#58a6ff';
+      ctx.fillStyle = '#00f0ff';
       ctx.font = '16px Orbitron';
       ctx.textAlign = 'center';
-      ctx.fillText(`FIREWALL DEFENSE LEVEL: ${round} // STATUS: ${isShowing ? 'WATCH SEQUENCE' : 'ENTER PATTERN'}`, canvas.width / 2, 40);
+      ctx.fillText(`FIREWALL DEFENSE LEVEL: ${round} // ${isShowing ? 'WATCH SEQUENCE' : 'ENTER PATTERN'}`, canvas.width / 2, 40);
 
       quadrants.forEach(q => {
         ctx.fillStyle = highlightId === q.id ? '#ffffff' : q.color;
-        ctx.globalAlpha = highlightId === q.id ? 1 : 0.4;
-        ctx.shadowBlur = highlightId === q.id ? 20 : 0;
+        ctx.globalAlpha = highlightId === q.id ? 1 : 0.45;
+        ctx.shadowBlur = highlightId === q.id ? 22 : 0;
         ctx.shadowColor = q.color;
         ctx.fillRect(q.x, q.y, q.w, q.h);
         ctx.globalAlpha = 1;
         ctx.shadowBlur = 0;
 
         ctx.fillStyle = '#fff';
-        ctx.font = '14px Orbitron';
+        ctx.font = 'bold 15px Orbitron';
         ctx.fillText(q.name, q.x + q.w / 2, q.y + q.h / 2 + 5);
       });
     };
@@ -509,12 +530,9 @@ class CyberArcade {
 
         const currentId = sequence[step];
         drawGrid(currentId);
-        window.cyberAudio.playBeep(400 + currentId * 150, 'sine', 0.2);
+        window.cyberAudio.playBeep(400 + currentId * 160, 'sine', 0.2);
 
-        setTimeout(() => {
-          drawGrid();
-        }, 300);
-
+        setTimeout(() => drawGrid(), 300);
         step++;
       }, 600);
     };
@@ -528,14 +546,13 @@ class CyberArcade {
       quadrants.forEach(q => {
         if (mouseX >= q.x && mouseX <= q.x + q.w && mouseY >= q.y && mouseY <= q.y + q.h) {
           drawGrid(q.id);
-          window.cyberAudio.playBeep(400 + q.id * 150, 'sine', 0.15);
+          window.cyberAudio.playBeep(400 + q.id * 160, 'sine', 0.15);
           setTimeout(() => drawGrid(), 200);
 
           playerSeq.push(q.id);
           const currentStep = playerSeq.length - 1;
 
           if (playerSeq[currentStep] !== sequence[currentStep]) {
-            // Failure
             window.cyberAudio.playExplosion();
             ctx.fillStyle = '#ff0055';
             ctx.font = '24px Orbitron';
@@ -545,10 +562,10 @@ class CyberArcade {
           }
 
           if (playerSeq.length === sequence.length) {
-            this.updateHUDScore(round * 20);
+            this.updateHUDScore(round * 25);
             window.cyberAudio.playSuccess();
             round++;
-            setTimeout(playSequence, 900);
+            setTimeout(playSequence, 800);
           }
         }
       });
@@ -577,7 +594,7 @@ class CyberArcade {
     const keydown = (e) => {
       keys[e.code] = true;
       if (e.code === 'Space') {
-        bullets.push({ x: turretX, y: canvas.height - 40, vy: -9 });
+        bullets.push({ x: turretX, y: canvas.height - 40, vy: -10 });
         window.cyberAudio.playLaser();
       }
     };
@@ -603,8 +620,7 @@ class CyberArcade {
       if (keys['ArrowLeft'] || keys['KeyA']) turretX = Math.max(30, turretX - 7);
       if (keys['ArrowRight'] || keys['KeyD']) turretX = Math.min(canvas.width - 30, turretX + 7);
 
-      // Spawn packets
-      if (tick % 25 === 0) {
+      if (tick % 24 === 0) {
         packets.push({
           x: Math.random() * (canvas.width - 60) + 30,
           y: -10,
@@ -614,18 +630,15 @@ class CyberArcade {
         });
       }
 
-      // Update Bullets
       for (let i = bullets.length - 1; i >= 0; i--) {
         bullets[i].y += bullets[i].vy;
         if (bullets[i].y < 0) bullets.splice(i, 1);
       }
 
-      // Update Packets & Collisions
       for (let pIdx = packets.length - 1; pIdx >= 0; pIdx--) {
         const p = packets[pIdx];
         p.y += p.vy;
 
-        // Check bullet hit
         for (let bIdx = bullets.length - 1; bIdx >= 0; bIdx--) {
           const b = bullets[bIdx];
           const dist = Math.hypot(p.x - b.x, p.y - b.y);
@@ -639,7 +652,6 @@ class CyberArcade {
           }
         }
 
-        // Reached bottom server core
         if (p && p.y > canvas.height - 30) {
           packets.splice(pIdx, 1);
           baseHealth -= 15;
@@ -647,26 +659,21 @@ class CyberArcade {
         }
       }
 
-      // Render
-      ctx.fillStyle = '#060810';
+      ctx.fillStyle = '#060812';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Server Health HUD
       ctx.fillStyle = baseHealth > 40 ? '#00ff41' : '#ff0055';
-      ctx.font = '14px Orbitron';
+      ctx.font = 'bold 15px Orbitron';
       ctx.fillText(`MAINFRAME HEALTH: ${baseHealth}%`, 25, 30);
 
-      // Render Server Core Bar
-      ctx.fillStyle = 'rgba(0, 240, 255, 0.2)';
+      ctx.fillStyle = 'rgba(0, 240, 255, 0.25)';
       ctx.fillRect(0, canvas.height - 15, canvas.width, 15);
 
-      // Render Bullets
       ctx.fillStyle = '#00f0ff';
       ctx.shadowBlur = 10;
       ctx.shadowColor = '#00f0ff';
       bullets.forEach(b => ctx.fillRect(b.x - 2, b.y - 10, 4, 12));
 
-      // Render Packets
       packets.forEach(p => {
         ctx.fillStyle = '#ff0055';
         ctx.shadowBlur = 8;
@@ -675,13 +682,12 @@ class CyberArcade {
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.fill();
         ctx.fillStyle = '#fff';
-        ctx.font = '10px monospace';
+        ctx.font = 'bold 10px monospace';
         ctx.textAlign = 'center';
         ctx.fillText(p.label, p.x, p.y + 3);
       });
       ctx.textAlign = 'left';
 
-      // Render Turret
       ctx.fillStyle = '#00ff41';
       ctx.shadowBlur = 12;
       ctx.shadowColor = '#00ff41';
@@ -725,26 +731,24 @@ class CyberArcade {
       ctx.font = '18px Orbitron';
       ctx.fillText(`CIPHER SPEEDRUN // TIME REMAINING: ${timeLeft}s`, 30, 40);
 
-      ctx.fillStyle = '#8b949e';
-      ctx.font = '14px "Share Tech Mono"';
+      ctx.fillStyle = '#c5d1de';
+      ctx.font = '15px "Share Tech Mono"';
       ctx.fillText(`DECRYPT THE SCRAMBLED CYBER TOKEN:`, 30, 80);
 
-      // Cipher Token Box
       ctx.fillStyle = '#00ff41';
-      ctx.font = '34px Orbitron';
-      ctx.shadowBlur = 10;
+      ctx.font = 'bold 36px Orbitron';
+      ctx.shadowBlur = 12;
       ctx.shadowColor = '#00ff41';
       ctx.fillText(`[ ${ciphers[cipherIdx].cipher} ]`, 30, 140);
       ctx.shadowBlur = 0;
 
-      // Input Prompt
       ctx.fillStyle = '#ffffff';
-      ctx.font = '22px monospace';
+      ctx.font = '24px monospace';
       ctx.fillText(`DECRYPTED INPUT > ${currentInput}_`, 30, 210);
 
-      ctx.fillStyle = '#8b949e';
-      ctx.font = '12px monospace';
-      ctx.fillText(`(Type answer on keyboard and press ENTER)`, 30, 260);
+      ctx.fillStyle = '#c5d1de';
+      ctx.font = '13px monospace';
+      ctx.fillText(`(Type answer on keyboard / D-pad, then press ENTER)`, 30, 260);
 
       if (timeLeft <= 0) {
         ctx.fillStyle = '#ff0055';
@@ -755,9 +759,7 @@ class CyberArcade {
 
     const timerInterval = setInterval(() => {
       timeLeft--;
-      if (timeLeft <= 0) {
-        clearInterval(timerInterval);
-      }
+      if (timeLeft <= 0) clearInterval(timerInterval);
       render();
     }, 1000);
 
@@ -808,7 +810,6 @@ class CyberArcade {
     let score = 0;
     let keys = {};
 
-    // Initialize Grid of Invaders
     for (let r = 0; r < 3; r++) {
       for (let c = 0; c < 8; c++) {
         invaders.push({
@@ -822,7 +823,7 @@ class CyberArcade {
     const keydown = (e) => {
       keys[e.code] = true;
       if (e.code === 'Space') {
-        bullets.push({ x: playerX, y: canvas.height - 40, vy: -8 });
+        bullets.push({ x: playerX, y: canvas.height - 40, vy: -9 });
         window.cyberAudio.playLaser();
       }
     };
@@ -838,18 +839,15 @@ class CyberArcade {
     const loop = () => {
       tick++;
 
-      // Player Movement
-      if (keys['ArrowLeft'] || keys['KeyA']) playerX = Math.max(30, playerX - 6);
-      if (keys['ArrowRight'] || keys['KeyD']) playerX = Math.min(canvas.width - 30, playerX + 6);
+      if (keys['ArrowLeft'] || keys['KeyA']) playerX = Math.max(30, playerX - 7);
+      if (keys['ArrowRight'] || keys['KeyD']) playerX = Math.min(canvas.width - 30, playerX + 7);
 
-      // Bullets
       for (let i = bullets.length - 1; i >= 0; i--) {
         bullets[i].y += bullets[i].vy;
         if (bullets[i].y < 0) bullets.splice(i, 1);
       }
 
-      // Move Invaders
-      if (tick % 30 === 0) {
+      if (tick % 28 === 0) {
         let touchEdge = false;
         invaders.forEach(inv => {
           if (!inv.alive) return;
@@ -859,14 +857,13 @@ class CyberArcade {
 
         if (touchEdge) {
           invaderDir *= -1;
-          invaders.forEach(inv => inv.y += 12);
+          invaders.forEach(inv => inv.y += 14);
         }
       }
 
-      // Bullet collision
       bullets.forEach((b, bIdx) => {
         invaders.forEach(inv => {
-          if (inv.alive && Math.hypot(b.x - inv.x, b.y - inv.y) < 20) {
+          if (inv.alive && Math.hypot(b.x - inv.x, b.y - inv.y) < 22) {
             inv.alive = false;
             bullets.splice(bIdx, 1);
             score += 25;
@@ -876,11 +873,9 @@ class CyberArcade {
         });
       });
 
-      // Render
       ctx.fillStyle = '#05070e';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Render Invaders
       invaders.forEach(inv => {
         if (!inv.alive) return;
         ctx.fillStyle = '#00ff41';
@@ -893,11 +888,9 @@ class CyberArcade {
       });
       ctx.shadowBlur = 0;
 
-      // Render Bullets
       ctx.fillStyle = '#00f0ff';
       bullets.forEach(b => ctx.fillRect(b.x - 2, b.y - 8, 4, 10));
 
-      // Render Player Ship
       ctx.fillStyle = '#00f0ff';
       ctx.fillRect(playerX - 18, canvas.height - 25, 36, 15);
       ctx.fillRect(playerX - 4, canvas.height - 35, 8, 10);
@@ -932,26 +925,21 @@ class CyberArcade {
     };
 
     const loop = () => {
-      // Player Controls
-      if (keys['ArrowUp'] || keys['KeyW']) playerY = Math.max(0, playerY - 6);
-      if (keys['ArrowDown'] || keys['KeyS']) playerY = Math.min(canvas.height - paddleH, playerY + 6);
+      if (keys['ArrowUp'] || keys['KeyW']) playerY = Math.max(0, playerY - 7);
+      if (keys['ArrowDown'] || keys['KeyS']) playerY = Math.min(canvas.height - paddleH, playerY + 7);
 
-      // AI Tracking
       const aiCenter = aiY + paddleH / 2;
       if (aiCenter < ball.y - 10) aiY += 4.5;
       else if (aiCenter > ball.y + 10) aiY -= 4.5;
 
-      // Ball Movement
       ball.x += ball.vx;
       ball.y += ball.vy;
 
-      // Top/Bottom bounce
       if (ball.y < ball.r || ball.y > canvas.height - ball.r) {
         ball.vy *= -1;
         window.cyberAudio.playBeep(500, 'sine', 0.03);
       }
 
-      // Player Paddle Bounce
       if (ball.x - ball.r < 30 + paddleW && ball.y > playerY && ball.y < playerY + paddleH) {
         ball.vx = Math.abs(ball.vx) * 1.05;
         score += 10;
@@ -959,24 +947,20 @@ class CyberArcade {
         window.cyberAudio.playBeep(800, 'triangle', 0.04);
       }
 
-      // AI Paddle Bounce
       if (ball.x + ball.r > canvas.width - 30 - paddleW && ball.y > aiY && ball.y < aiY + paddleH) {
         ball.vx = -Math.abs(ball.vx) * 1.05;
         window.cyberAudio.playBeep(700, 'triangle', 0.04);
       }
 
-      // Reset Ball
       if (ball.x < 0 || ball.x > canvas.width) {
         ball = { x: canvas.width / 2, y: canvas.height / 2, vx: ball.x < 0 ? 5 : -5, vy: 3, r: 8 };
         window.cyberAudio.playGlitch();
       }
 
-      // Render
       ctx.fillStyle = '#060a14';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Center Line
-      ctx.strokeStyle = 'rgba(0, 240, 255, 0.15)';
+      ctx.strokeStyle = 'rgba(0, 240, 255, 0.2)';
       ctx.setLineDash([6, 6]);
       ctx.beginPath();
       ctx.moveTo(canvas.width / 2, 0);
@@ -984,21 +968,18 @@ class CyberArcade {
       ctx.stroke();
       ctx.setLineDash([]);
 
-      // Player Paddle
       ctx.fillStyle = '#00ff41';
-      ctx.shadowBlur = 10;
+      ctx.shadowBlur = 12;
       ctx.shadowColor = '#00ff41';
       ctx.fillRect(30, playerY, paddleW, paddleH);
 
-      // AI Paddle
       ctx.fillStyle = '#ff0055';
-      ctx.shadowBlur = 10;
+      ctx.shadowBlur = 12;
       ctx.shadowColor = '#ff0055';
       ctx.fillRect(canvas.width - 30 - paddleW, aiY, paddleW, paddleH);
 
-      // Ball
       ctx.fillStyle = '#00f0ff';
-      ctx.shadowBlur = 12;
+      ctx.shadowBlur = 14;
       ctx.shadowColor = '#00f0ff';
       ctx.beginPath();
       ctx.arc(ball.x, ball.y, ball.r, 0, Math.PI * 2);
@@ -1013,6 +994,6 @@ class CyberArcade {
 }
 
 window.cyberArcade = new CyberArcade();
-document.addEventListener('DOMContentLoaded', () => {
+onReady(() => {
   window.cyberArcade.init();
 });

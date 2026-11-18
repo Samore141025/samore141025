@@ -12,7 +12,7 @@
 
   <br/>
 
-  <!-- GitHub Contribution Snake Eating SAMORE Heatmap -->
+  <!-- Dynamic GitHub Contribution Snake Eating SAMORE Heatmap -->
   <img src="https://raw.githubusercontent.com/Samore141025/samore141025/main/assets/samore_snake.svg" alt="GitHub Contribution Snake Eating SAMORE Grid" width="100%" />
 
   <br/><br/>
@@ -51,14 +51,14 @@
 
 > *"SAMORE is not merely an alias. It is an engineering doctrine forged for the next era of cyber intelligence and autonomous computing."*
 
-```ansi
-[1;32m[ S ] SUSTAINABLE[0m   --> Resilient, low-energy AI architectures and green computing fault tolerance.
-[1;36m[ A ] AUTOMATION[0m    --> Multi-agent defense swarms, autonomous CI/CD, and self-healing threat pipelines.
-[1;33m[ M ] MANUFACTURING[0m --> Industrial network infrastructure, high-reliability embedded systems (Flash Electronics).
-[1;35m[ O ] OPTIMIZATION[0m  --> Model quantization, low-latency edge inference, and optical flow tuning.
-[1;34m[ R ] RESEARCH[0m      --> Space vision, remote sensing at Bharatiya Antariksh Hackathon, and IEEE R&D.
-[1;31m[ E ] EXPANSION[0m     --> Enterprise scale with Red Hat OpenShift AI and global hackathon leadership.
-```
+| PROTOCOL | DOCTRINE PILLAR | CORE ARCHITECTURE & MISSION DIRECTIVE |
+| :---: | :--- | :--- |
+| 🟢 **`[ S ]`** | **SUSTAINABLE** | Resilient, low-energy AI architectures and green computing fault tolerance |
+| 🔵 **`[ A ]`** | **AUTOMATION** | Multi-agent defense swarms, autonomous CI/CD, and self-healing threat pipelines |
+| 🟡 **`[ M ]`** | **MANUFACTURING** | Industrial network infrastructure and high-reliability embedded systems (*Flash Electronics*) |
+| 🟣 **`[ O ]`** | **OPTIMIZATION** | Model quantization, low-latency edge inference, and optical flow hyper-tuning |
+| 🔷 **`[ R ]`** | **RESEARCH** | Space vision, remote sensing at *Bharatiya Antariksh Hackathon*, and *IEEE R&D* |
+| 🔴 **`[ E ]`** | **EXPANSION** | Enterprise scale with *Red Hat OpenShift AI 2.13* and global hackathon leadership |
 
 ---
 
@@ -158,15 +158,15 @@
 You can launch and play all 8 games directly in the companion **[Cyber-Deck Terminal](https://samore141025.github.io/samore141025/)**:
 
 | Protocol ID | Mini-Game | Classification | Mission Objective |
-| :--- | :--- | :--- | :--- |
-| **MOD_01** | **Cyber Snake** | Contributions | Consume green commits, expand the matrix streak, avoid firewalls |
-| **MOD_02** | **Terminal Breach** | Cryptography | Crack the 4-digit hexadecimal security access key with parity hints |
-| **MOD_03** | **Matrix Runner** | Reflex / Agility | Dodge cascading glitch debris in falling matrix data streams |
-| **MOD_04** | **Memory Core** | Neural / Memory | Simon Says: repeat escalating 4-quadrant firewall defense signals |
-| **MOD_05** | **DDoS Defense** | Defense / Blaster | Intercept and shoot down incoming malicious packet swarms |
-| **MOD_06** | **Cipher Decode** | Cryptanalysis | Decrypt scrambled cybersecurity terms against a 30s countdown clock |
-| **MOD_07** | **Cyber Invaders** | Space Retro | Repel descending waves of rogue AI daemons with pulse lasers |
-| **MOD_08** | **Binary Pong** | AI Simulation | High-speed neon table pong against an adaptive firewall daemon |
+| :---: | :--- | :--- | :--- |
+| **`MOD_01`** | **Cyber Snake** | Contributions | Consume green commits, expand the matrix streak, avoid firewalls |
+| **`MOD_02`** | **Terminal Breach** | Cryptography | Crack the 4-digit hexadecimal security access key with parity hints |
+| **`MOD_03`** | **Matrix Runner** | Reflex / Agility | Dodge cascading glitch debris in falling matrix data streams |
+| **`MOD_04`** | **Memory Core** | Neural / Memory | Simon Says: repeat escalating 4-quadrant firewall defense signals |
+| **`MOD_05`** | **DDoS Defense** | Defense / Blaster | Intercept and shoot down incoming malicious packet swarms |
+| **`MOD_06`** | **Cipher Decode** | Cryptanalysis | Decrypt scrambled cybersecurity terms against a 30s countdown clock |
+| **`MOD_07`** | **Cyber Invaders** | Space Retro | Repel descending waves of rogue AI daemons with pulse lasers |
+| **`MOD_08`** | **Binary Pong** | AI Simulation | High-speed neon table pong against an adaptive firewall daemon |
 
 ---
 
@@ -174,11 +174,13 @@ You can launch and play all 8 games directly in the companion **[Cyber-Deck Term
 
 <div align="center">
 
-```
-======================================================================
-               DIRECT TRANSMISSION LINES: ONLINE
-======================================================================
-```
+| CHANNEL | DESTINATION | STATUS | TRANSMISSION UPLINK |
+| :--- | :--- | :---: | :---: |
+| ✉️ **Encrypted Email** | `shrikantashokmore@gmail.com` | `● ONLINE` | [**Transmit Email ↗**](mailto:shrikantashokmore@gmail.com) |
+| 💼 **LinkedIn Network** | `linkedin.com/in/samore141025` | `● VERIFIED` | [**Connect on LinkedIn ↗**](https://www.linkedin.com/in/samore141025/) |
+| 💻 **GitHub Protocol** | `github.com/Samore141025` | `● ACTIVE` | [**View GitHub Profile ↗**](https://github.com/Samore141025) |
+
+<br/>
 
 <a href="mailto:shrikantashokmore@gmail.com">
   <img src="https://img.shields.io/badge/ENCRYPTED_EMAIL-shrikantashokmore%40gmail.com-00ff41?style=for-the-badge&logo=gmail&logoColor=black&labelColor=0d1117" alt="Direct Email" />
@@ -189,7 +191,7 @@ You can launch and play all 8 games directly in the companion **[Cyber-Deck Term
 </a>
 &nbsp;&nbsp;
 <a href="https://github.com/Samore141025" target="_blank">
-  <img src="https://img.shields.io/badge/GITHUB-Samore141025-e2e8f0?style=for-the-badge&logo=github&logoColor=black&labelColor=0d1117" alt="GitHub Profile" />
+  <img src="https://img.shields.io/badge/GITHUB-Samore141025-ffffff?style=for-the-badge&logo=github&logoColor=black&labelColor=0d1117" alt="GitHub Profile" />
 </a>
 
 <br/><br/>
