@@ -1,28 +1,30 @@
 /* ===================================================================
-   SAMORE // PROTOCOL CYBERPUNK HUD TERMINAL STYLESHEET (ENHANCED)
+   SAMORE // PROTOCOL CYBERPUNK HUD TERMINAL STYLESHEET (ULTRA HACKER)
    Target: Shrikant More (@Samore141025)
-   Features: High-Contrast Text, Matrix Rain Canvas, D-Pad Controls, Hover Glow
+   Features: Full-Page Cyber Hover Effects, Holographic Borders,
+             Live Telemetry HUD, Matrix Glow & D-Pad Controls
    =================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Orbitron:wght@500;700;900&family=Share+Tech+Mono&display=swap');
 
 :root {
-  --bg-primary: #070a12;
-  --bg-secondary: #0d1424;
-  --bg-card: rgba(11, 18, 32, 0.92);
+  --bg-primary: #050811;
+  --bg-secondary: #0a1020;
+  --bg-card: rgba(9, 16, 30, 0.94);
   --border-neon: #00ff41;
   --border-cyan: #00f0ff;
-  --border-dim: #25334d;
+  --border-dim: #1d2d47;
   --text-primary: #00ff41;
   --text-cyan: #00f0ff;
   --text-white: #ffffff;
-  --text-muted: #c5d1de; /* High-contrast readable light grey */
-  --text-dim: #8b9cb0;
+  --text-muted: #c5d1de;
+  --text-dim: #7f91a6;
   --text-red: #ff0055;
   --font-mono: 'Share Tech Mono', 'Fira Code', monospace;
   --font-cyber: 'Orbitron', sans-serif;
-  --glow-green: 0 0 12px rgba(0, 255, 65, 0.6);
-  --glow-cyan: 0 0 12px rgba(0, 240, 255, 0.6);
+  --glow-green: 0 0 16px rgba(0, 255, 65, 0.7);
+  --glow-cyan: 0 0 16px rgba(0, 240, 255, 0.7);
+  --glow-magenta: 0 0 16px rgba(255, 0, 85, 0.7);
 }
 
 * {
@@ -38,7 +40,7 @@ body {
   overflow-x: hidden;
   min-height: 100vh;
   position: relative;
-  cursor: crosshair; /* Sleek cyber crosshair fallback */
+  cursor: crosshair;
 }
 
 /* Full-Screen Matrix Rain Background Canvas */
@@ -50,10 +52,10 @@ body {
   height: 100%;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.22;
+  opacity: 0.28;
 }
 
-/* Custom Cyber Cursor Floating Element */
+/* Custom Interactive Cursor Floating Element */
 #custom-cursor {
   position: fixed;
   width: 24px;
@@ -86,13 +88,30 @@ body {
 }
 
 #custom-cursor.active {
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
 }
 
 #custom-cursor.active .crosshair {
   border-color: var(--border-neon);
-  box-shadow: 0 0 12px var(--border-neon);
+  box-shadow: 0 0 15px var(--border-neon);
+  animation: spinCursor 3s linear infinite;
+}
+
+@keyframes spinCursor {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Particle Canvas for Mouse Cyber Sparks */
+#spark-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 999998;
 }
 
 /* CRT Scanlines Overlay */
@@ -109,7 +128,7 @@ body {
   background-size: 100% 3px;
   pointer-events: none;
   z-index: 9999;
-  opacity: 0.55;
+  opacity: 0.5;
 }
 
 /* Header HUD Bar */
@@ -118,12 +137,13 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 12px 24px;
-  background: rgba(7, 10, 18, 0.96);
+  background: rgba(5, 8, 16, 0.97);
   border-bottom: 1px solid var(--border-dim);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
   position: sticky;
   top: 0;
   z-index: 1000;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
 }
 
 .hud-left {
@@ -153,7 +173,26 @@ body {
 
 @keyframes pulseLight {
   0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.8); }
+  50% { opacity: 0.35; transform: scale(0.8); }
+}
+
+/* Live Telemetry Ticker */
+.telemetry-ticker {
+  display: flex;
+  gap: 14px;
+  font-size: 11.5px;
+  color: var(--text-dim);
+}
+
+.telemetry-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.telemetry-val {
+  color: var(--text-cyan);
+  font-weight: 700;
 }
 
 .hud-right {
@@ -163,25 +202,28 @@ body {
 }
 
 .hud-btn {
-  background: rgba(13, 20, 36, 0.8);
+  background: rgba(10, 18, 34, 0.85);
   border: 1px solid var(--border-neon);
   color: var(--text-primary);
-  padding: 7px 14px;
+  padding: 7px 15px;
   font-family: var(--font-mono);
   font-size: 12px;
+  font-weight: 700;
   letter-spacing: 1px;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
   display: flex;
   align-items: center;
   gap: 6px;
   border-radius: 3px;
+  position: relative;
+  overflow: hidden;
 }
 
 .hud-btn:hover {
-  background: rgba(0, 255, 65, 0.22);
+  background: var(--border-neon);
   box-shadow: var(--glow-green);
-  color: #fff;
-  transform: translateY(-1px);
+  color: #000;
+  transform: translateY(-2px);
 }
 
 /* Master Layout Container */
@@ -199,23 +241,24 @@ body {
   border: 1px solid var(--border-dim);
   border-left: 4px solid var(--border-neon);
   padding: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 28px;
   position: relative;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
   border-radius: 4px;
-  transition: border-color 0.3s;
+  transition: all 0.3s ease;
 }
 
 .identity-hero:hover {
+  border-color: var(--border-cyan);
   border-left-color: var(--border-cyan);
-  box-shadow: 0 10px 40px rgba(0, 240, 255, 0.15);
+  box-shadow: 0 10px 45px rgba(0, 240, 255, 0.2);
 }
 
 .identity-hero::before {
-  content: "SEC_CLASSIFIED // CLEARANCE LEVEL 5";
+  content: "SEC_CLASSIFIED // CLEARANCE LEVEL 5 // AGENT: SHUGO-01";
   position: absolute;
-  top: 10px;
-  right: 15px;
+  top: 12px;
+  right: 18px;
   font-size: 11px;
   color: var(--text-cyan);
   letter-spacing: 2px;
@@ -230,18 +273,20 @@ body {
 
 .morphing-title {
   font-family: var(--font-cyber);
-  font-size: clamp(32px, 5.5vw, 64px);
+  font-size: clamp(34px, 5.8vw, 68px);
   font-weight: 900;
-  letter-spacing: 4px;
+  letter-spacing: 5px;
   color: var(--text-primary);
   text-shadow: 0 0 20px rgba(0, 255, 65, 0.7);
   display: inline-block;
   transition: all 0.2s;
+  user-select: none;
 }
 
 .morphing-title:hover {
   color: var(--text-cyan);
-  text-shadow: 0 0 25px rgba(0, 240, 255, 0.85);
+  text-shadow: 0 0 30px rgba(0, 240, 255, 0.95);
+  transform: scale(1.02);
 }
 
 .morphing-subtitle {
@@ -252,56 +297,75 @@ body {
   font-weight: 700;
 }
 
-/* S.A.M.O.R.E Grid Cards */
+/* S.A.M.O.R.E Grid Cards (Proper Spacing & Never Out of Box) */
 .samore-legend-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
   margin-top: 24px;
 }
 
 .legend-card {
-  background: rgba(7, 12, 24, 0.85);
+  background: rgba(7, 12, 24, 0.9);
   border: 1px solid var(--border-dim);
-  padding: 14px 16px;
+  padding: 16px 18px;
   transition: all 0.25s ease;
   position: relative;
   border-radius: 4px;
+  overflow: hidden;
+}
+
+.legend-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--border-cyan), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
 .legend-card:hover {
   border-color: var(--border-cyan);
-  transform: translateY(-4px);
-  box-shadow: 0 6px 20px rgba(0, 240, 255, 0.25);
-  background: rgba(10, 18, 36, 0.95);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(0, 240, 255, 0.28);
+  background: rgba(11, 20, 38, 0.98);
+}
+
+.legend-card:hover::before {
+  opacity: 1;
 }
 
 .legend-letter {
   font-family: var(--font-cyber);
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 900;
   color: var(--text-primary);
-  margin-bottom: 4px;
-  text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+  margin-bottom: 6px;
+  text-shadow: 0 0 12px rgba(0, 255, 65, 0.6);
+  transition: all 0.25s;
 }
 
 .legend-card:hover .legend-letter {
   color: var(--text-cyan);
-  text-shadow: 0 0 12px rgba(0, 240, 255, 0.7);
+  text-shadow: 0 0 16px rgba(0, 240, 255, 0.85);
+  transform: translateX(4px);
 }
 
 .legend-label {
   font-size: 14px;
   color: var(--text-cyan);
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
 }
 
 .legend-desc {
-  font-size: 12px;
+  font-size: 12.5px;
   color: var(--text-muted);
-  margin-top: 6px;
-  line-height: 1.45;
+  margin-top: 8px;
+  line-height: 1.5;
 }
 
 /* ===================================================================
@@ -311,8 +375,8 @@ body {
   background: var(--bg-card);
   border: 1px solid var(--border-dim);
   border-top: 3px solid var(--border-neon);
-  padding: 20px;
-  margin-bottom: 30px;
+  padding: 22px;
+  margin-bottom: 28px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
   border-radius: 4px;
   transition: all 0.3s ease;
@@ -320,7 +384,8 @@ body {
 
 .live-snake-panel:hover {
   border-color: var(--border-neon);
-  box-shadow: var(--glow-green);
+  box-shadow: 0 10px 35px rgba(0, 255, 65, 0.25);
+  transform: translateY(-3px);
 }
 
 .snake-panel-header {
@@ -329,39 +394,44 @@ body {
   align-items: center;
   margin-bottom: 14px;
   border-bottom: 1px solid var(--border-dim);
-  padding-bottom: 10px;
+  padding-bottom: 12px;
 }
 
 .snake-title {
   font-family: var(--font-cyber);
-  font-size: 16px;
+  font-size: 17px;
   color: var(--text-primary);
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .snake-hud-stats {
   display: flex;
   gap: 16px;
-  font-size: 13px;
+  font-size: 13.5px;
   color: var(--text-cyan);
 }
 
 .live-snake-canvas-wrapper {
-  background: #040810;
+  background: #03060d;
   border: 1px solid var(--border-dim);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  padding: 12px;
   border-radius: 4px;
   overflow-x: auto;
+  transition: border-color 0.2s;
+}
+
+.live-snake-canvas-wrapper:hover {
+  border-color: var(--border-neon);
 }
 
 #liveSnakeCanvas {
   display: block;
-  background: #03060c;
+  background: #020409;
   max-width: 100%;
 }
 
@@ -371,15 +441,15 @@ body {
   gap: 12px;
   margin-bottom: 24px;
   border-bottom: 1px solid var(--border-dim);
-  padding-bottom: 12px;
+  padding-bottom: 14px;
   overflow-x: auto;
 }
 
 .tab-btn {
-  background: rgba(11, 18, 32, 0.7);
+  background: rgba(10, 18, 34, 0.75);
   border: 1px solid var(--border-dim);
   color: var(--text-muted);
-  padding: 12px 22px;
+  padding: 12px 24px;
   font-family: var(--font-mono);
   font-size: 14px;
   font-weight: 700;
@@ -387,20 +457,21 @@ body {
   transition: all 0.25s ease;
   white-space: nowrap;
   border-radius: 3px;
+  position: relative;
 }
 
 .tab-btn:hover {
   border-color: var(--border-cyan);
   color: var(--text-cyan);
-  background: rgba(0, 240, 255, 0.12);
-  transform: translateY(-2px);
+  background: rgba(0, 240, 255, 0.14);
+  transform: translateY(-3px);
   box-shadow: var(--glow-cyan);
 }
 
 .tab-btn.active {
   border-color: var(--border-neon);
   color: var(--text-primary);
-  background: rgba(0, 255, 65, 0.15);
+  background: rgba(0, 255, 65, 0.18);
   box-shadow: var(--glow-green);
 }
 
@@ -439,16 +510,17 @@ body {
   background: var(--bg-card);
   border: 1px solid var(--border-dim);
   border-top: 3px solid var(--border-cyan);
-  padding: 22px;
+  padding: 24px;
   text-align: center;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
   border-radius: 4px;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
 }
 
 .ai-avatar-card:hover {
   border-color: var(--border-cyan);
   box-shadow: var(--glow-cyan);
+  transform: translateY(-4px);
 }
 
 .avatar-radar {
@@ -462,6 +534,11 @@ body {
   align-items: center;
   justify-content: center;
   box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.15);
+  transition: all 0.3s;
+}
+
+.ai-avatar-card:hover .avatar-radar {
+  box-shadow: inset 0 0 30px rgba(0, 240, 255, 0.35), 0 0 15px rgba(0, 240, 255, 0.2);
 }
 
 .radar-sweep-hand {
@@ -469,7 +546,7 @@ body {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background: conic-gradient(from 0deg, transparent 70%, rgba(0, 240, 255, 0.4) 100%);
+  background: conic-gradient(from 0deg, transparent 70%, rgba(0, 240, 255, 0.45) 100%);
   animation: sweepRadar 3s linear infinite;
 }
 
@@ -487,7 +564,7 @@ body {
 .voice-visualizer {
   width: 100%;
   height: 48px;
-  background: #04060a;
+  background: #03060c;
   border: 1px solid var(--border-dim);
   margin-top: 15px;
   display: block;
@@ -499,7 +576,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin-top: 12px;
+  margin-top: 14px;
   font-size: 13px;
   font-weight: 700;
   color: var(--text-cyan);
@@ -512,6 +589,12 @@ body {
   flex-direction: column;
   height: 560px;
   border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.ai-chat-window:hover {
+  border-color: var(--border-cyan);
+  box-shadow: 0 8px 30px rgba(0, 240, 255, 0.18);
 }
 
 .terminal-header {
@@ -555,7 +638,7 @@ body {
   border-radius: 4px;
   max-width: 85%;
   word-break: break-word;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
 }
 
 .msg-agent {
@@ -567,7 +650,8 @@ body {
 }
 
 .msg-agent:hover {
-  background: rgba(0, 240, 255, 0.15);
+  background: rgba(0, 240, 255, 0.16);
+  transform: translateX(4px);
 }
 
 .msg-user {
@@ -580,6 +664,7 @@ body {
 
 .msg-user:hover {
   background: rgba(0, 255, 65, 0.16);
+  transform: translateX(-4px);
 }
 
 .quick-prompts {
@@ -630,11 +715,12 @@ body {
   font-size: 14px;
   outline: none;
   border-radius: 3px;
+  transition: all 0.2s;
 }
 
 .chat-input:focus {
   border-color: var(--border-neon);
-  box-shadow: 0 0 10px rgba(0, 255, 65, 0.35);
+  box-shadow: 0 0 12px rgba(0, 255, 65, 0.35);
 }
 
 .send-btn, .mic-btn {
@@ -693,23 +779,40 @@ body {
 .game-card {
   background: var(--bg-card);
   border: 1px solid var(--border-dim);
-  padding: 20px;
+  padding: 22px;
   transition: all 0.25s ease;
   position: relative;
   border-radius: 4px;
+  overflow: hidden;
+}
+
+.game-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--border-neon), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
 .game-card:hover {
   border-color: var(--border-neon);
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 255, 65, 0.25);
-  background: rgba(12, 22, 40, 0.95);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 10px 30px rgba(0, 255, 65, 0.3);
+  background: rgba(12, 22, 42, 0.98);
+}
+
+.game-card:hover::after {
+  opacity: 1;
 }
 
 .game-badge {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 14px;
+  right: 14px;
   font-size: 11px;
   font-weight: 700;
   padding: 3px 8px;
@@ -720,14 +823,14 @@ body {
 }
 
 .game-icon {
-  font-size: 34px;
+  font-size: 36px;
   margin-bottom: 12px;
   display: inline-block;
-  transition: transform 0.2s;
+  transition: transform 0.25s ease;
 }
 
 .game-card:hover .game-icon {
-  transform: scale(1.15);
+  transform: scale(1.2);
 }
 
 .game-name {
@@ -817,7 +920,7 @@ body {
 .close-arena-btn:hover {
   background: var(--text-red);
   color: #fff;
-  box-shadow: 0 0 10px var(--text-red);
+  box-shadow: 0 0 12px var(--text-red);
 }
 
 .game-canvas-wrapper {
@@ -864,8 +967,8 @@ body {
   font-family: var(--font-mono);
   font-size: 16px;
   font-weight: 700;
-  width: 54px;
-  height: 46px;
+  width: 56px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -882,7 +985,7 @@ body {
 }
 
 .v-action-btn {
-  width: 160px;
+  width: 170px;
   border-color: var(--border-neon);
   color: var(--text-primary);
   font-size: 13px;
@@ -917,12 +1020,30 @@ body {
   position: relative;
   border-radius: 4px;
   transition: all 0.25s ease;
+  overflow: hidden;
+}
+
+.dossier-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--border-cyan), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
 .dossier-card:hover {
   border-color: var(--border-cyan);
-  transform: translateY(-4px);
-  box-shadow: 0 10px 30px rgba(0, 240, 255, 0.2);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 12px 35px rgba(0, 240, 255, 0.25);
+  background: rgba(11, 20, 38, 0.98);
+}
+
+.dossier-card:hover::after {
+  opacity: 1;
 }
 
 .dossier-tag {
@@ -973,6 +1094,12 @@ body {
   padding: 30px;
   margin-bottom: 30px;
   border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.transmission-panel:hover {
+  border-color: var(--border-cyan);
+  box-shadow: 0 10px 35px rgba(0, 240, 255, 0.2);
 }
 
 .panel-title {
@@ -994,7 +1121,7 @@ body {
   background: rgba(0, 255, 65, 0.08);
   border: 1px solid var(--border-neon);
   color: var(--text-primary);
-  padding: 12px 20px;
+  padding: 12px 22px;
   text-decoration: none;
   font-family: var(--font-mono);
   font-size: 14px;
@@ -1010,5 +1137,5 @@ body {
   background: var(--border-neon);
   box-shadow: var(--glow-green);
   color: #000;
-  transform: translateY(-2px);
+  transform: translateY(-3px) scale(1.02);
 }

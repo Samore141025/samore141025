@@ -1,12 +1,13 @@
 /**
- * SAMORE // PROTOCOL CORE ENGINE (ENHANCED)
+ * SAMORE // PROTOCOL CORE ENGINE (ULTRA HACKER EDITION)
  * Target: Shrikant More (@Samore141025)
  * Features:
- * - Bulletproof Bootstrap Lifecyle
- * - Matrix Rain Background Engine
- * - Autonomous GitHub Contribution Snake Simulator (Real Game Logic)
- * - Web Audio FX Synthesizer
- * - Tab Controller & Interactive HUD
+ * - Full-Page Mouse Cyber Sparks Particle Trail
+ * - Matrix Digital Rain Engine
+ * - Autonomous GitHub Contribution Snake Simulator
+ * - Live Cyber Telemetry Ticker (CPU/RAM/Ping)
+ * - Acoustic Hover Feedback & Sound Synthesizer
+ * - Tab Controller & CRT Mode
  */
 
 // Universal DOM Bootstrap Helper
@@ -35,7 +36,7 @@ class CyberAudio {
     }
   }
 
-  playBeep(freq = 600, type = 'sine', duration = 0.06, gain = 0.08) {
+  playBeep(freq = 600, type = 'sine', duration = 0.05, gain = 0.07) {
     if (this.muted) return;
     this.init();
     if (!this.ctx) return;
@@ -51,6 +52,10 @@ class CyberAudio {
       osc.start();
       osc.stop(this.ctx.currentTime + duration);
     } catch (e) {}
+  }
+
+  playHover() {
+    this.playBeep(1200, 'triangle', 0.02, 0.03);
   }
 
   playClick() {
@@ -84,9 +89,9 @@ class CyberAudio {
       const osc = this.ctx.createOscillator();
       const g = this.ctx.createGain();
       osc.type = 'square';
-      osc.frequency.setValueAtTime(150, this.ctx.currentTime);
-      osc.frequency.setValueAtTime(450, this.ctx.currentTime + 0.04);
-      osc.frequency.setValueAtTime(90, this.ctx.currentTime + 0.08);
+      osc.frequency.setValueAtTime(160, this.ctx.currentTime);
+      osc.frequency.setValueAtTime(480, this.ctx.currentTime + 0.04);
+      osc.frequency.setValueAtTime(110, this.ctx.currentTime + 0.08);
       g.gain.setValueAtTime(0.08, this.ctx.currentTime);
       g.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.12);
       osc.connect(g);
@@ -100,7 +105,7 @@ class CyberAudio {
     if (this.muted) return;
     const notes = [440, 554, 659, 880];
     notes.forEach((f, idx) => {
-      setTimeout(() => this.playBeep(f, 'sine', 0.1, 0.1), idx * 70);
+      setTimeout(() => this.playBeep(f, 'sine', 0.1, 0.09), idx * 65);
     });
   }
 
@@ -126,7 +131,81 @@ class CyberAudio {
 
 window.cyberAudio = new CyberAudio();
 
-// 2. Matrix Digital Rain Canvas Engine
+// 2. Full-Page Mouse Cyber Sparks Particle Trail Engine
+class CyberSparkEngine {
+  constructor() {
+    this.canvas = document.getElementById('spark-canvas');
+    this.ctx = null;
+    this.particles = [];
+  }
+
+  init() {
+    if (!this.canvas) return;
+    this.ctx = this.canvas.getContext('2d');
+    this.resize();
+    window.addEventListener('resize', () => this.resize());
+
+    window.addEventListener('mousemove', (e) => {
+      for (let i = 0; i < 2; i++) {
+        this.particles.push({
+          x: e.clientX,
+          y: e.clientY,
+          vx: (Math.random() - 0.5) * 2.5,
+          vy: (Math.random() - 0.5) * 2.5,
+          size: Math.random() * 3 + 1,
+          alpha: 1,
+          color: Math.random() > 0.5 ? '#00ff41' : '#00f0ff',
+          char: Math.random() > 0.7 ? (Math.random() > 0.5 ? '1' : '0') : null
+        });
+      }
+    });
+
+    this.loop();
+  }
+
+  resize() {
+    if (!this.canvas) return;
+    this.canvas.width = window.innerWidth;
+    this.canvas.height = window.innerHeight;
+  }
+
+  loop() {
+    if (!this.ctx || !this.canvas) return;
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+    for (let i = this.particles.length - 1; i >= 0; i--) {
+      const p = this.particles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+      p.alpha -= 0.035;
+
+      if (p.alpha <= 0) {
+        this.particles.splice(i, 1);
+        continue;
+      }
+
+      this.ctx.globalAlpha = p.alpha;
+      this.ctx.fillStyle = p.color;
+      this.ctx.shadowBlur = 6;
+      this.ctx.shadowColor = p.color;
+
+      if (p.char) {
+        this.ctx.font = '10px monospace';
+        this.ctx.fillText(p.char, p.x, p.y);
+      } else {
+        this.ctx.beginPath();
+        this.ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        this.ctx.fill();
+      }
+    }
+
+    this.ctx.globalAlpha = 1;
+    this.ctx.shadowBlur = 0;
+    requestAnimationFrame(() => this.loop());
+  }
+}
+
+// 3. Matrix Digital Rain Canvas Engine
 class MatrixRainEngine {
   constructor() {
     this.canvas = document.getElementById('matrix-canvas');
@@ -147,6 +226,7 @@ class MatrixRainEngine {
   }
 
   resize() {
+    if (!this.canvas) return;
     this.canvas.width = window.innerWidth;
     this.canvas.height = window.innerHeight;
     this.columns = Math.floor(this.canvas.width / this.fontSize);
@@ -154,12 +234,12 @@ class MatrixRainEngine {
   }
 
   loop() {
-    if (!this.active || !this.ctx) {
+    if (!this.active || !this.ctx || !this.canvas) {
       requestAnimationFrame(() => this.loop());
       return;
     }
 
-    this.ctx.fillStyle = 'rgba(7, 10, 18, 0.08)';
+    this.ctx.fillStyle = 'rgba(5, 8, 17, 0.08)';
     this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
     this.ctx.font = `${this.fontSize}px monospace`;
@@ -169,11 +249,9 @@ class MatrixRainEngine {
       const x = i * this.fontSize;
       const y = this.drops[i] * this.fontSize;
 
-      // Glow head character white/cyan
-      this.ctx.fillStyle = '#cffffa';
+      this.ctx.fillStyle = '#d2ffff';
       this.ctx.fillText(text, x, y);
 
-      // Trailing characters green
       this.ctx.fillStyle = '#00ff41';
       this.ctx.fillText(text, x, y - this.fontSize);
 
@@ -188,15 +266,14 @@ class MatrixRainEngine {
 
   toggle() {
     this.active = !this.active;
-    if (!this.active && this.ctx) {
+    if (!this.active && this.ctx && this.canvas) {
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
     return this.active;
   }
 }
 
-// 3. Autonomous Contribution Snake Simulation Engine
-// Spells "SAMORE", snake actively pathfinds, eats blocks, and letters regenerate infinitely!
+// 4. Autonomous Contribution Snake Simulation Engine
 class AutonomousContributionSnake {
   constructor() {
     this.canvas = document.getElementById('liveSnakeCanvas');
@@ -205,7 +282,7 @@ class AutonomousContributionSnake {
     this.rows = 7;
     this.cellSize = 14;
     this.gap = 4;
-    this.grid = []; // 2D array of {x, y, active, isSamore}
+    this.grid = [];
     this.snake = [
       { x: 5, y: 3 },
       { x: 4, y: 3 },
@@ -214,9 +291,7 @@ class AutonomousContributionSnake {
     this.dir = { x: 1, y: 0 };
     this.manualMode = false;
     this.score = 0;
-    this.eatenCount = 0;
-    this.totalSamoreBlocks = 0;
-    this.speed = 85; // ms
+    this.speed = 85;
     this.intervalId = null;
   }
 
@@ -231,12 +306,8 @@ class AutonomousContributionSnake {
     this.bindControls();
   }
 
-  // Letter matrix definitions for S-A-M-O-R-E
   initGrid() {
     this.grid = [];
-    this.totalSamoreBlocks = 0;
-
-    // SAMORE letter coordinate map
     const samoreMap = new Set();
     const addBlock = (c, r) => samoreMap.add(`${c},${r}`);
 
@@ -266,12 +337,12 @@ class AutonomousContributionSnake {
 
     // E (cols 44..48)
     for (let r = 0; r <= 6; r++) addBlock(44, r);
-    [45,46,47,48].forEach(c => { addBlock(c, 0); addBlock(c, 3); addBlock(c, 6); });
+    [45,46,47,48].forEach(c => { addBlock(c, 0); addBlock(c, 3); });
+    [45,46,47,48].forEach(c => addBlock(c, 6));
 
     for (let r = 0; r < this.rows; r++) {
       for (let c = 0; c < this.cols; c++) {
         const isSamore = samoreMap.has(`${c},${r}`);
-        if (isSamore) this.totalSamoreBlocks++;
         this.grid.push({
           c, r,
           isSamore,
@@ -311,7 +382,6 @@ class AutonomousContributionSnake {
     const target = this.findTarget();
 
     if (!target) {
-      // All blocks eaten, regenerate!
       this.regenerateSamore();
       return;
     }
@@ -323,14 +393,11 @@ class AutonomousContributionSnake {
       { x: 0, y: -1 }
     ];
 
-    // Filter out 180-degree reverse turns
     const validMoves = possibleMoves.filter(m => !(m.x === -this.dir.x && m.y === -this.dir.y));
 
-    // Sort by proximity to target
     validMoves.sort((a, b) => {
       const nextA = { x: (head.x + a.x + this.cols) % this.cols, y: (head.y + a.y + this.rows) % this.rows };
       const nextB = { x: (head.x + b.x + this.cols) % this.cols, y: (head.y + b.y + this.rows) % this.rows };
-
       const distA = Math.hypot(nextA.x - target.c, nextA.y - target.r);
       const distB = Math.hypot(nextB.x - target.c, nextB.y - target.r);
       return distA - distB;
@@ -352,20 +419,17 @@ class AutonomousContributionSnake {
       y: (head.y + this.dir.y + this.rows) % this.rows
     };
 
-    // Check if food eaten
     const eatenCell = this.grid.find(cell => cell.c === nextHead.x && cell.r === nextHead.y && cell.active);
     this.snake.unshift(nextHead);
 
     if (eatenCell) {
       eatenCell.active = false;
       this.score += 10;
-      this.eatenCount++;
-      window.cyberAudio.playBeep(850, 'triangle', 0.03, 0.04);
+      window.cyberAudio.playBeep(850, 'triangle', 0.03, 0.03);
 
       const scoreEl = document.getElementById('liveSnakeScore');
       if (scoreEl) scoreEl.innerText = this.score;
 
-      // Keep growing snake
       if (this.snake.length > 25) {
         this.snake.pop();
       }
@@ -383,7 +447,6 @@ class AutonomousContributionSnake {
     ctx.fillStyle = '#050914';
     ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
-    // Draw Heatmap Cells
     const offsetX = 10;
     const offsetY = 10;
 
@@ -403,7 +466,6 @@ class AutonomousContributionSnake {
       }
     });
 
-    // Draw Snake
     this.snake.forEach((part, idx) => {
       const px = offsetX + part.x * (this.cellSize + this.gap);
       const py = offsetY + part.y * (this.cellSize + this.gap);
@@ -441,9 +503,9 @@ class AutonomousContributionSnake {
   }
 }
 
-// 4. Main App Controller Initialization
+// 5. Main App Controller Initialization
 onReady(() => {
-  // Initialize Audio on first interaction
+  // Initialize Audio
   const initAudio = () => {
     window.cyberAudio.init();
     window.removeEventListener('click', initAudio);
@@ -461,14 +523,19 @@ onReady(() => {
     matrixToggleBtn.addEventListener('click', () => {
       const isOn = matrixEngine.toggle();
       matrixToggleBtn.innerText = isOn ? "🌧️ MATRIX: ON" : "🌧️ MATRIX: OFF";
+      window.cyberAudio.playClick();
     });
   }
+
+  // Initialize Mouse Spark Trail
+  const sparkEngine = new CyberSparkEngine();
+  sparkEngine.init();
 
   // Initialize Autonomous Snake Simulator
   const snakeSim = new AutonomousContributionSnake();
   snakeSim.init();
 
-  // Custom Cursor
+  // Custom Cursor Tracking & Full-Page Audio Feedback
   const cursor = document.getElementById('custom-cursor');
   if (cursor) {
     window.addEventListener('mousemove', (e) => {
@@ -476,11 +543,26 @@ onReady(() => {
       cursor.style.top = `${e.clientY}px`;
     });
 
-    document.querySelectorAll('button, a, input, .game-card, .legend-card, .prompt-chip, .tab-btn, .v-btn').forEach(el => {
-      el.addEventListener('mouseenter', () => cursor.classList.add('active'));
+    const hoverElements = 'button, a, input, .game-card, .legend-card, .prompt-chip, .tab-btn, .v-btn, .dossier-card, .skill-pill';
+    document.querySelectorAll(hoverElements).forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.classList.add('active');
+        window.cyberAudio.playHover();
+      });
       el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
     });
   }
+
+  // Live System Telemetry Ticker Update
+  const cpuEl = document.getElementById('liveCpuVal');
+  const ramEl = document.getElementById('liveRamVal');
+  const pingEl = document.getElementById('livePingVal');
+
+  setInterval(() => {
+    if (cpuEl) cpuEl.innerText = `${Math.floor(Math.random() * 18 + 8)}%`;
+    if (ramEl) ramEl.innerText = `${(Math.random() * 0.4 + 2.8).toFixed(1)}GB`;
+    if (pingEl) pingEl.innerText = `${Math.floor(Math.random() * 12 + 10)}ms`;
+  }, 2200);
 
   // Morphing Name Glitch Effect: SHRIKANT MORE <-> SAMORE
   const morphElement = document.getElementById('morphingName');

@@ -1,25 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 280" width="100%" height="280">
   <defs>
-    <!-- Linear & Radial Gradients -->
+    <!-- Background Gradient -->
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#050811"/>
-      <stop offset="50%" stop-color="#091224"/>
-      <stop offset="100%" stop-color="#04060c"/>
+      <stop offset="0%" stop-color="#040711"/>
+      <stop offset="50%" stop-color="#081022"/>
+      <stop offset="100%" stop-color="#02040a"/>
     </linearGradient>
 
-    <linearGradient id="neonGreen" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#00ff41"/>
-      <stop offset="100%" stop-color="#39d353"/>
-    </linearGradient>
-
-    <linearGradient id="cyberCyan" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#00f0ff"/>
-      <stop offset="100%" stop-color="#7000ff"/>
+    <!-- Scan Beam Gradient -->
+    <linearGradient id="scanBeamGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(0, 240, 255, 0)"/>
+      <stop offset="50%" stop-color="rgba(0, 255, 65, 0.25)"/>
+      <stop offset="100%" stop-color="rgba(0, 240, 255, 0)"/>
     </linearGradient>
 
     <!-- Glow Filters -->
     <filter id="glowGreen" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feGaussianBlur stdDeviation="3.5" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
@@ -36,138 +33,171 @@
 
     <!-- Scanline Pattern -->
     <pattern id="scanlines" width="100" height="4" patternUnits="userSpaceOnUse">
-      <line x1="0" y1="0" x2="100" y2="0" stroke="rgba(0, 255, 65, 0.05)" stroke-width="1.5"/>
+      <line x1="0" y1="0" x2="100" y2="0" stroke="rgba(0, 255, 65, 0.04)" stroke-width="1.2"/>
     </pattern>
 
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&amp;family=Orbitron:wght@700;900&amp;display=swap');
+    <style><![CDATA[
+      @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@700;900&display=swap');
 
       .bg-rect { fill: url(#bgGrad); stroke: #00ff41; stroke-width: 1.5; }
-      .grid-lines { stroke: rgba(0, 240, 255, 0.07); stroke-width: 1; }
-      .hud-accent { stroke: #00f0ff; stroke-width: 2; fill: none; }
+      .grid-lines { stroke: rgba(0, 240, 255, 0.09); stroke-width: 1; }
+      .hud-accent { stroke: #00f0ff; stroke-width: 2.2; fill: none; }
       
       .status-text {
         font-family: 'Share Tech Mono', monospace;
         font-size: 13px;
         fill: #00ff41;
         letter-spacing: 2px;
+        font-weight: bold;
       }
       
-      .tag-text {
-        font-family: 'Share Tech Mono', monospace;
-        font-size: 12px;
-        fill: #8b949e;
-        letter-spacing: 1px;
+      .sub-hud {
+        font-family: 'Orbitron', sans-serif;
+        font-size: 13px;
+        fill: #00f0ff;
+        letter-spacing: 3px;
+        font-weight: 700;
+        animation: pulseSub 3s infinite alternate;
       }
 
-      /* Animated Name Morphing: SHRIKANT MORE &lt;-&gt; SAMORE */
+      .sub-tags {
+        font-family: 'Share Tech Mono', monospace;
+        font-size: 12px;
+        fill: #c5d1de;
+        letter-spacing: 2px;
+      }
+
+      /* Animated Name Morphing: SHRIKANT MORE <-> SAMORE */
       .morph-name {
         font-family: 'Orbitron', sans-serif;
         font-weight: 900;
-        font-size: 46px;
-        letter-spacing: 4px;
+        font-size: 44px;
+        letter-spacing: 5px;
         text-anchor: middle;
       }
 
+      /* State 1: SHRIKANT MORE */
       .name-state-1 {
         fill: #00ff41;
         filter: url(#glowGreen);
         animation: cycleName1 8s infinite ease-in-out;
       }
 
+      /* State 2: SAMORE */
       .name-state-2 {
         fill: #00f0ff;
         filter: url(#glowCyan);
         animation: cycleName2 8s infinite ease-in-out;
       }
 
-      .glitch-slice {
-        animation: glitchShake 8s infinite ease-in-out;
+      /* RGB Split / Chromatic Aberration Glitch Artifacts */
+      .glitch-red {
+        fill: #ff0055;
+        opacity: 0;
+        animation: glitchRedAnim 8s infinite ease-in-out;
+      }
+
+      .glitch-blue {
+        fill: #00f0ff;
+        opacity: 0;
+        animation: glitchBlueAnim 8s infinite ease-in-out;
       }
 
       @keyframes cycleName1 {
         0%, 42% { opacity: 1; transform: translateY(0); }
-        45%, 48% { opacity: 0.3; transform: translate(3px, -2px) skewX(10deg); }
-        50%, 92% { opacity: 0; transform: translateY(10px); }
-        95%, 98% { opacity: 0.4; transform: translate(-3px, 2px) skewX(-8deg); }
+        45%, 48% { opacity: 0.2; transform: translate(3px, -2px) skewX(12deg); }
+        50%, 92% { opacity: 0; transform: translateY(8px); }
+        95%, 98% { opacity: 0.3; transform: translate(-3px, 2px) skewX(-10deg); }
         100% { opacity: 1; transform: translateY(0); }
       }
 
       @keyframes cycleName2 {
-        0%, 45% { opacity: 0; transform: translateY(-10px); }
-        48%, 51% { opacity: 0.5; transform: translate(-3px, 2px) skewX(-10deg); }
+        0%, 45% { opacity: 0; transform: translateY(-8px); }
+        48%, 51% { opacity: 0.3; transform: translate(-3px, 2px) skewX(-12deg); }
         53%, 92% { opacity: 1; transform: translateY(0); }
-        95%, 98% { opacity: 0.3; transform: translate(3px, -2px) skewX(8deg); }
-        100% { opacity: 0; transform: translateY(-10px); }
+        95%, 98% { opacity: 0.2; transform: translate(3px, -2px) skewX(10deg); }
+        100% { opacity: 0; transform: translateY(-8px); }
       }
 
-      @keyframes glitchShake {
-        0%, 43%, 52%, 93%, 100% { opacity: 0; transform: translateX(0); }
-        44%, 47% { opacity: 0.8; transform: translateX(-4px) skewX(15deg); }
-        94%, 97% { opacity: 0.8; transform: translateX(4px) skewX(-15deg); }
+      @keyframes glitchRedAnim {
+        0%, 42%, 52%, 92%, 100% { opacity: 0; transform: translate(0, 0); }
+        44%, 47% { opacity: 0.9; transform: translate(-5px, 2px) skewX(-15deg); }
+        94%, 97% { opacity: 0.9; transform: translate(5px, -2px) skewX(15deg); }
       }
 
-      /* Acronym Banner Cycle */
-      .acronym-text {
-        font-family: 'Share Tech Mono', monospace;
-        font-size: 13.5px;
-        letter-spacing: 2px;
-        text-anchor: middle;
-        fill: #00f0ff;
-        animation: pulseAcronym 4s infinite alternate;
+      @keyframes glitchBlueAnim {
+        0%, 42%, 52%, 92%, 100% { opacity: 0; transform: translate(0, 0); }
+        44%, 47% { opacity: 0.9; transform: translate(5px, -2px) skewX(12deg); }
+        94%, 97% { opacity: 0.9; transform: translate(-5px, 2px) skewX(-12deg); }
       }
 
-      @keyframes pulseAcronym {
-        0% { opacity: 0.75; fill: #00f0ff; }
-        100% { opacity: 1; fill: #39d353; filter: url(#glowGreen); }
+      @keyframes pulseSub {
+        0% { opacity: 0.8; fill: #00f0ff; }
+        100% { opacity: 1; fill: #00ff41; filter: url(#glowGreen); }
+      }
+
+      /* Rotating HUD Ring */
+      .rotating-ring {
+        transform-origin: 475px 115px;
+        animation: spinRing 20s linear infinite;
+      }
+      @keyframes spinRing {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
       }
 
       /* Radar Sweep */
       .radar-sweep {
-        transform-origin: 900px 50px;
+        transform-origin: 890px 42px;
         animation: sweep 4s linear infinite;
       }
       @keyframes sweep {
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
       }
-    </style>
+    ]]></style>
   </defs>
 
   <!-- Frame Background -->
-  <rect class="bg-rect" x="5" y="5" width="940" height="270" rx="10"/>
-  <rect x="5" y="5" width="940" height="270" rx="10" fill="url(#scanlines)" pointer-events="none"/>
+  <rect class="bg-rect" x="6" y="6" width="938" height="268" rx="8"/>
+  <rect x="6" y="6" width="938" height="268" rx="8" fill="url(#scanlines)" pointer-events="none"/>
 
-  <!-- Cyber Grid Background Lines -->
+  <!-- Animated Vertical Scanning Laser Line -->
+  <rect x="6" y="6" width="938" height="40" fill="url(#scanBeamGrad)" opacity="0.6">
+    <animate attributeName="y" values="6;230;6" dur="6s" repeatCount="indefinite"/>
+  </rect>
+
+  <!-- Cyber Grid Lines -->
   <g class="grid-lines">
-    <line x1="30" y1="45" x2="920" y2="45"/>
-    <line x1="30" y1="235" x2="920" y2="235"/>
-    <line x1="180" y1="5" x2="180" y2="275"/>
-    <line x1="770" y1="5" x2="770" y2="275"/>
+    <line x1="30" y1="46" x2="920" y2="46"/>
+    <line x1="30" y1="234" x2="920" y2="234"/>
+    <line x1="160" y1="6" x2="160" y2="274"/>
+    <line x1="790" y1="6" x2="790" y2="274"/>
   </g>
 
-  <!-- HUD Corner Angles -->
-  <path class="hud-accent" d="M 15 35 L 15 15 L 35 15"/>
-  <path class="hud-accent" d="M 935 35 L 935 15 L 915 15"/>
-  <path class="hud-accent" d="M 15 245 L 15 265 L 35 265"/>
-  <path class="hud-accent" d="M 935 245 L 935 265 L 915 265"/>
+  <!-- Corner Brackets -->
+  <path class="hud-accent" d="M 16 36 L 16 16 L 36 16"/>
+  <path class="hud-accent" d="M 934 36 L 934 16 L 914 16"/>
+  <path class="hud-accent" d="M 16 244 L 16 264 L 36 264"/>
+  <path class="hud-accent" d="M 934 244 L 934 264 L 914 264"/>
 
   <!-- Top Status Bar -->
   <text x="35" y="32" class="status-text">
-    <tspan fill="#ff0055">●</tspan> SECURE PROTOCOL // CLASSIFIED LEVEL 5 // STATUS: ONLINE
+    <tspan fill="#ff0055">●</tspan> SECURE PROTOCOL // CLEARANCE: LEVEL 5 // STATUS: ONLINE
   </text>
-  <text x="915" y="32" class="status-text" text-anchor="end">
+  <text x="830" y="32" class="status-text" text-anchor="end">
     SYS_ID: 141025-SHUGO
   </text>
 
-  <!-- Center Decorative Hex Crosshairs -->
-  <circle cx="475" cy="115" r="75" stroke="rgba(0,255,65,0.12)" stroke-width="1" fill="none"/>
-  <circle cx="475" cy="115" r="95" stroke="rgba(0,240,255,0.08)" stroke-width="1" stroke-dasharray="6,4" fill="none"/>
-
-  <!-- Glitch Shadow Artifacts -->
-  <g class="glitch-slice">
-    <text x="475" y="125" class="morph-name" fill="#ff0055">S H R I K A N T   M O R E</text>
+  <!-- Center Decorative Hex Crosshairs & Rotating Reticle -->
+  <g class="rotating-ring">
+    <circle cx="475" cy="115" r="72" stroke="rgba(0,255,65,0.18)" stroke-width="1.2" stroke-dasharray="12,6" fill="none"/>
+    <circle cx="475" cy="115" r="92" stroke="rgba(0,240,255,0.14)" stroke-width="1" stroke-dasharray="4,8" fill="none"/>
   </g>
+
+  <!-- Chromatic Aberration RGB Glitch Layers -->
+  <text x="475" y="125" class="morph-name glitch-red">SHRIKANT MORE</text>
+  <text x="475" y="125" class="morph-name glitch-blue">⚡ S A M O R E ⚡</text>
 
   <!-- Morphing Main Identity -->
   <!-- State 1: SHRIKANT MORE -->
@@ -180,45 +210,37 @@
     ⚡ S A M O R E ⚡
   </text>
 
-  <!-- Decoded Moniker Matrix -->
-  <text x="475" y="172" class="acronym-text">
-    [ S ] Sustainable • [ A ] Automation • [ M ] Manufacturing • [ O ] Optimization • [ R ] Research • [ E ] Expansion
+  <!-- Perfectly Spaced Cyber Sub-HUD (Fits within box cleanly) -->
+  <text x="475" y="172" class="sub-hud" text-anchor="middle">
+    &gt;&gt; AUTONOMOUS CYBER DEFENSE &amp; AI SPECIALIST &lt;&lt;
   </text>
 
-  <!-- Bottom Badges / Roles -->
-  <g transform="translate(0, 205)">
-    <text x="475" y="0" class="tag-text" text-anchor="middle" fill="#58a6ff">
-      AI/ML SPECIALIST • CYBER THREAT INTELLIGENCE (CTI/CTH) • CERTIFIED ETHICAL HACKER (CEH)
-    </text>
-    <text x="475" y="20" class="status-text" text-anchor="middle" font-size="11.5px">
-      [ OPENSHIFT AI • TENSORFLOW • SHUGO DEFENSE • SATELLITE VISION • MULTI-AGENT ARCHITECTURE ]
-    </text>
-  </g>
+  <text x="475" y="202" class="sub-tags" text-anchor="middle">
+    [ TENSORFLOW • CEH HACKER • OPENSHIFT AI • SHUGO DEFENSE • SATELLITE VISION ]
+  </text>
 
-  <!-- Small Radar Widget in Top Right -->
-  <g transform="translate(860, 20)">
-    <circle cx="25" cy="20" r="16" stroke="#00ff41" stroke-width="0.8" fill="none" opacity="0.4"/>
-    <circle cx="25" cy="20" r="8" stroke="#00ff41" stroke-width="0.8" fill="none" opacity="0.3"/>
-    <line x1="25" y1="4" x2="25" y2="36" stroke="#00ff41" stroke-width="0.6" opacity="0.4"/>
-    <line x1="9" y1="20" x2="41" y2="20" stroke="#00ff41" stroke-width="0.6" opacity="0.4"/>
-    <g class="radar-sweep" style="transform-origin: 25px 20px;">
-      <line x1="25" y1="20" x2="25" y2="4" stroke="#00ff41" stroke-width="1.5" opacity="0.9"/>
+  <!-- Top Right Mini-Radar Sweep -->
+  <g transform="translate(865, 18)">
+    <circle cx="25" cy="24" r="16" stroke="#00ff41" stroke-width="0.8" fill="none" opacity="0.5"/>
+    <circle cx="25" cy="24" r="8" stroke="#00ff41" stroke-width="0.8" fill="none" opacity="0.35"/>
+    <line x1="25" y1="8" x2="25" y2="40" stroke="#00ff41" stroke-width="0.6" opacity="0.5"/>
+    <line x1="9" y1="24" x2="41" y2="24" stroke="#00ff41" stroke-width="0.6" opacity="0.5"/>
+    <g class="radar-sweep" style="transform-origin: 25px 24px;">
+      <line x1="25" y1="24" x2="25" y2="8" stroke="#00f0ff" stroke-width="2" opacity="0.95"/>
     </g>
   </g>
 
-  <!-- Left Side Data Blocks -->
-  <g transform="translate(35, 75)" class="tag-text" font-size="10.5px">
-    <text x="0" y="0" fill="#00ff41">&gt; INITIALIZING AGENT...</text>
-    <text x="0" y="16" fill="#8b949e">&gt; NODE: EDUSKILLS / NMIET</text>
-    <text x="0" y="32" fill="#8b949e">&gt; SEC_AUTH: GRANTED [0x7F]</text>
-    <text x="0" y="48" fill="#00f0ff">&gt; AI_CORE: STANDBY</text>
+  <!-- Left Side Data Telemetry -->
+  <g transform="translate(30, 85)" class="sub-tags" font-size="10.5px">
+    <text x="0" y="0" fill="#00ff41">&gt; NODE: EDUSKILLS / NMIET</text>
+    <text x="0" y="18" fill="#c5d1de">&gt; SEC_AUTH: GRANTED [0x7F]</text>
+    <text x="0" y="36" fill="#00f0ff">&gt; DEFENSE_CORE: ARMED</text>
   </g>
 
-  <!-- Right Side Data Blocks -->
-  <g transform="translate(735, 75)" class="tag-text" font-size="10.5px">
-    <text x="0" y="0" fill="#00f0ff">&gt; DEFENSE: SHUGO-SHIELD</text>
-    <text x="0" y="16" fill="#8b949e">&gt; THREAT_HUNT: ACTIVE</text>
-    <text x="0" y="32" fill="#8b949e">&gt; GENAI_APAC: BELLATRIX</text>
-    <text x="0" y="48" fill="#00ff41">&gt; PORTAL_LINK: READY</text>
+  <!-- Right Side Data Telemetry -->
+  <g transform="translate(805, 85)" class="sub-tags" font-size="10.5px">
+    <text x="0" y="0" fill="#00f0ff">&gt; CTI / CTH: ACTIVE</text>
+    <text x="0" y="18" fill="#c5d1de">&gt; APAC_AI: BELLATRIX</text>
+    <text x="0" y="36" fill="#00ff41">&gt; PROTOCOL: S.A.M.O.R.E.</text>
   </g>
 </svg>
