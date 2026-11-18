@@ -540,23 +540,49 @@ body {
   100% { opacity: 1; }
 }
 
-/* S.A.M.O.R.E Grid Cards (Proper Spacing & Never Out of Box) */
+/* S.A.M.O.R.E Grid Cards (Single Straight Horizontal Line S-A-M-O-R-E) */
 .samore-legend-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 12px;
   margin-top: 24px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1024px) {
+  .samore-legend-grid {
+    grid-template-columns: repeat(6, minmax(160px, 1fr));
+    overflow-x: auto;
+    padding-bottom: 10px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+  .samore-legend-grid::-webkit-scrollbar {
+    height: 5px;
+  }
+  .samore-legend-grid::-webkit-scrollbar-track {
+    background: rgba(4, 8, 16, 0.6);
+  }
+  .samore-legend-grid::-webkit-scrollbar-thumb {
+    background: var(--border-cyan);
+    border-radius: 3px;
+  }
 }
 
 .legend-card {
   background: rgba(7, 12, 24, 0.9);
   border: 1px solid var(--border-dim);
-  padding: 16px 18px;
+  padding: 14px 12px;
   transition: all 0.25s ease;
   position: relative;
   border-radius: 4px;
   overflow: hidden;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  scroll-snap-align: start;
 }
 
 .legend-card:active {
@@ -572,14 +598,15 @@ body {
 
 .legend-badge {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 9.5px;
   font-weight: 700;
   color: var(--text-primary);
   border: 1px solid rgba(0, 255, 65, 0.4);
-  padding: 2px 6px;
+  padding: 2px 5px;
   border-radius: 2px;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   background: rgba(0, 255, 65, 0.05);
+  white-space: nowrap;
 }
 
 .legend-card::before {
@@ -607,10 +634,10 @@ body {
 
 .legend-letter {
   font-family: var(--font-cyber);
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 900;
   color: var(--text-primary);
-  margin-bottom: 6px;
+  margin-bottom: 4px;
   text-shadow: 0 0 12px rgba(0, 255, 65, 0.6);
   transition: all 0.25s;
 }
@@ -622,17 +649,18 @@ body {
 }
 
 .legend-label {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--text-cyan);
   font-weight: 700;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
+  word-break: break-word;
 }
 
 .legend-desc {
-  font-size: 12.5px;
+  font-size: 11.5px;
   color: var(--text-muted);
-  margin-top: 8px;
-  line-height: 1.5;
+  margin-top: 6px;
+  line-height: 1.45;
 }
 
 /* ===================================================================
