@@ -1,0 +1,304 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 230" width="100%" height="230">
+  <defs>
+    <style><![CDATA[
+      @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@700&display=swap');
+
+      .bg { fill: #0d1117; stroke: #30363d; stroke-width: 1; }
+      .header-text { font-family: 'Share Tech Mono', monospace; font-size: 13px; fill: #58a6ff; letter-spacing: 1.5px; }
+      .legend-text { font-family: 'Share Tech Mono', monospace; font-size: 11px; fill: #8b949e; }
+      
+      /* Grid Base Cells */
+      .c-0 { fill: #161b22; }
+      .c-1 { fill: #0e4429; }
+      .c-2 { fill: #006d32; }
+      .c-3 { fill: #26a641; }
+      .c-4 { fill: #39d353; }
+      
+      /* SAMORE Letter Blocks Glow and Re-illumination animation */
+      .samore-cell {
+        animation: blockRegen 12s infinite ease-in-out;
+      }
+      
+      @keyframes blockRegen {
+        0%, 20% { fill: #39d353; opacity: 1; filter: drop-shadow(0 0 3px #00ff41); }
+        35% { fill: #0e4429; opacity: 0.3; }
+        55% { fill: #26a641; opacity: 0.8; }
+        70%, 100% { fill: #39d353; opacity: 1; filter: drop-shadow(0 0 4px #00ff41); }
+      }
+
+      /* Animated Snake Head and Body */
+      .snake-head {
+        fill: #00f0ff;
+        filter: drop-shadow(0 0 6px #00f0ff);
+      }
+      .snake-body {
+        fill: #39d353;
+        filter: drop-shadow(0 0 3px #00ff41);
+      }
+      .snake-eye {
+        fill: #ff0055;
+      }
+      
+      /* Snake Motion along complex serpentine path covering S-A-M-O-R-E */
+      #snakeEntity {
+        animation: snakePatrol 12s linear infinite;
+      }
+      
+      @keyframes snakePatrol {
+        0% { transform: translate(30px, 48px); }
+        8% { transform: translate(140px, 48px); }
+        15% { transform: translate(140px, 140px); }
+        25% { transform: translate(280px, 140px); }
+        35% { transform: translate(280px, 50px); }
+        45% { transform: translate(450px, 50px); }
+        55% { transform: translate(450px, 145px); }
+        65% { transform: translate(620px, 145px); }
+        75% { transform: translate(620px, 50px); }
+        85% { transform: translate(840px, 50px); }
+        95% { transform: translate(840px, 145px); }
+        100% { transform: translate(30px, 48px); }
+      }
+    ]]></style>
+  </defs>
+
+  <!-- Container Box -->
+  <rect class="bg" x="2" y="2" width="916" height="226" rx="8"/>
+
+  <!-- Top Terminal Header -->
+  <g transform="translate(25, 28)">
+    <circle cx="0" cy="-4" r="5" fill="#ff5f56"/>
+    <circle cx="16" cy="-4" r="5" fill="#ffbd2e"/>
+    <circle cx="32" cy="-4" r="5" fill="#27c93f"/>
+    <text x="50" y="0" class="header-text">
+      SAMORE.CORE // GITHUB CONTRIBUTION STREAK EATER // TARGET: &quot;SAMORE&quot;
+    </text>
+    
+    <!-- Legend -->
+    <g transform="translate(680, 0)">
+      <text x="-35" y="0" class="legend-text">Less</text>
+      <rect x="0" y="-8" width="10" height="10" rx="2" class="c-0"/>
+      <rect x="14" y="-8" width="10" height="10" rx="2" class="c-1"/>
+      <rect x="28" y="-8" width="10" height="10" rx="2" class="c-2"/>
+      <rect x="42" y="-8" width="10" height="10" rx="2" class="c-3"/>
+      <rect x="56" y="-8" width="10" height="10" rx="2" class="c-4"/>
+      <text x="75" y="0" class="legend-text">More</text>
+    </g>
+  </g>
+
+  <!-- Month Markers -->
+  <g transform="translate(50, 48)" class="legend-text" font-size="10px">
+    <text x="30" y="0">Jan</text>
+    <text x="110" y="0">Feb</text>
+    <text x="190" y="0">Mar</text>
+    <text x="270" y="0">Apr</text>
+    <text x="350" y="0">May</text>
+    <text x="430" y="0">Jun</text>
+    <text x="510" y="0">Jul</text>
+    <text x="590" y="0">Aug</text>
+    <text x="670" y="0">Sep</text>
+    <text x="750" y="0">Oct</text>
+    <text x="820" y="0">Nov</text>
+  </g>
+
+  <!-- Days labels -->
+  <g transform="translate(26, 75)" class="legend-text" font-size="9px">
+    <text x="0" y="0">Mon</text>
+    <text x="0" y="32">Wed</text>
+    <text x="0" y="64">Fri</text>
+  </g>
+
+  <!-- GitHub Heatmap Matrix (7 Rows x 53 Columns) -->
+  <!-- Base background empty commit blocks -->
+  <g id="heatmapGrid" transform="translate(50, 60)">
+    <!-- Generated dynamically styled grid -->
+    <!-- We generate letter clusters for S - A - M - O - R - E -->
+
+    <!-- Letter 'S' (Cols 3 to 7) -->
+    <!-- Row 0: S top -->
+    <rect x="45" y="0" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="60" y="0" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="75" y="0" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="90" y="0" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="105" y="0" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <!-- Row 1: S left -->
+    <rect x="45" y="16" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <!-- Row 2: S left -->
+    <rect x="45" y="32" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <!-- Row 3: S mid -->
+    <rect x="45" y="48" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="60" y="48" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="75" y="48" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="90" y="48" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="105" y="48" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <!-- Row 4: S right -->
+    <rect x="105" y="64" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <!-- Row 5: S right -->
+    <rect x="105" y="80" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <!-- Row 6: S bot -->
+    <rect x="45" y="96" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="60" y="96" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="75" y="96" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="90" y="96" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="105" y="96" width="12" height="12" rx="2.5" class="samore-cell"/>
+
+    <!-- Letter 'A' (Cols 10 to 14) -->
+    <!-- Row 0: A top -->
+    <rect x="180" y="0" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="195" y="0" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="210" y="0" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <!-- Rows 1 to 6: A legs & bar -->
+    <rect x="165" y="16" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="225" y="16" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="165" y="32" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="225" y="32" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <!-- Bar -->
+    <rect x="165" y="48" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="180" y="48" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="195" y="48" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="210" y="48" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="225" y="48" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="165" y="64" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="225" y="64" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="165" y="80" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="225" y="80" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="165" y="96" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="225" y="96" width="12" height="12" rx="2.5" class="samore-cell"/>
+
+    <!-- Letter 'M' (Cols 17 to 22) -->
+    <rect x="285" y="0" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="360" y="0" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="285" y="16" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="300" y="16" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="345" y="16" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="360" y="16" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="285" y="32" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="315" y="32" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="330" y="32" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="360" y="32" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="285" y="48" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="322" y="48" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="360" y="48" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="285" y="64" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="360" y="64" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="285" y="80" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="360" y="80" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="285" y="96" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="360" y="96" width="12" height="12" rx="2.5" class="samore-cell"/>
+
+    <!-- Letter 'O' (Cols 25 to 29) -->
+    <rect x="435" y="0" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="450" y="0" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="465" y="0" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="420" y="16" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="480" y="16" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="420" y="32" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="480" y="32" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="420" y="48" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="480" y="48" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="420" y="64" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="480" y="64" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="420" y="80" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="480" y="80" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="435" y="96" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="450" y="96" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="465" y="96" width="12" height="12" rx="2.5" class="samore-cell"/>
+
+    <!-- Letter 'R' (Cols 32 to 36) -->
+    <rect x="540" y="0" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="555" y="0" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="570" y="0" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="585" y="0" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="540" y="16" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="600" y="16" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="540" y="32" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="600" y="32" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="540" y="48" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="555" y="48" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="570" y="48" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="585" y="48" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="540" y="64" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="570" y="64" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="540" y="80" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="585" y="80" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="540" y="96" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="600" y="96" width="12" height="12" rx="2.5" class="samore-cell"/>
+
+    <!-- Letter 'E' (Cols 39 to 43) -->
+    <rect x="660" y="0" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="675" y="0" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="690" y="0" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="705" y="0" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="720" y="0" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="660" y="16" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="660" y="32" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="660" y="48" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="675" y="48" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="690" y="48" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="705" y="48" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="660" y="64" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="660" y="80" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="660" y="96" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="675" y="96" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="690" y="96" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="705" y="96" width="12" height="12" rx="2.5" class="samore-cell"/>
+    <rect x="720" y="96" width="12" height="12" rx="2.5" class="samore-cell"/>
+
+    <!-- Fill background dots for empty matrix slots to feel like real github -->
+    <!-- Col 0 -->
+    <rect x="0" y="0" width="12" height="12" rx="2.5" class="c-0"/>
+    <rect x="0" y="16" width="12" height="12" rx="2.5" class="c-1"/>
+    <rect x="0" y="32" width="12" height="12" rx="2.5" class="c-0"/>
+    <rect x="0" y="48" width="12" height="12" rx="2.5" class="c-0"/>
+    <rect x="0" y="64" width="12" height="12" rx="2.5" class="c-2"/>
+    <rect x="0" y="80" width="12" height="12" rx="2.5" class="c-0"/>
+    <rect x="0" y="96" width="12" height="12" rx="2.5" class="c-1"/>
+    <!-- Col 1 -->
+    <rect x="15" y="0" width="12" height="12" rx="2.5" class="c-0"/>
+    <rect x="15" y="16" width="12" height="12" rx="2.5" class="c-0"/>
+    <rect x="15" y="32" width="12" height="12" rx="2.5" class="c-1"/>
+    <rect x="15" y="48" width="12" height="12" rx="2.5" class="c-0"/>
+    <rect x="15" y="64" width="12" height="12" rx="2.5" class="c-0"/>
+    <rect x="15" y="80" width="12" height="12" rx="2.5" class="c-0"/>
+    <rect x="15" y="96" width="12" height="12" rx="2.5" class="c-0"/>
+    <!-- Col 2 -->
+    <rect x="30" y="0" width="12" height="12" rx="2.5" class="c-1"/>
+    <rect x="30" y="16" width="12" height="12" rx="2.5" class="c-0"/>
+    <rect x="30" y="32" width="12" height="12" rx="2.5" class="c-0"/>
+    <rect x="30" y="48" width="12" height="12" rx="2.5" class="c-0"/>
+    <rect x="30" y="64" width="12" height="12" rx="2.5" class="c-1"/>
+    <rect x="30" y="80" width="12" height="12" rx="2.5" class="c-0"/>
+    <rect x="30" y="96" width="12" height="12" rx="2.5" class="c-0"/>
+    <!-- Random organic commit points around right edge -->
+    <rect x="765" y="16" width="12" height="12" rx="2.5" class="c-2"/>
+    <rect x="765" y="48" width="12" height="12" rx="2.5" class="c-1"/>
+    <rect x="780" y="32" width="12" height="12" rx="2.5" class="c-3"/>
+    <rect x="780" y="80" width="12" height="12" rx="2.5" class="c-1"/>
+    <rect x="795" y="0" width="12" height="12" rx="2.5" class="c-2"/>
+    <rect x="795" y="64" width="12" height="12" rx="2.5" class="c-4"/>
+    <rect x="810" y="48" width="12" height="12" rx="2.5" class="c-1"/>
+    <rect x="825" y="32" width="12" height="12" rx="2.5" class="c-2"/>
+    <rect x="840" y="16" width="12" height="12" rx="2.5" class="c-3"/>
+  </g>
+
+  <!-- Animated Multi-Segment Cyber Snake Entity -->
+  <g id="snakeEntity">
+    <!-- Trail Segment 4 -->
+    <rect x="-45" y="0" width="11" height="11" rx="2.5" fill="#006d32" opacity="0.6"/>
+    <!-- Trail Segment 3 -->
+    <rect x="-30" y="0" width="11" height="11" rx="2.5" fill="#26a641" opacity="0.8"/>
+    <!-- Trail Segment 2 -->
+    <rect x="-15" y="0" width="11" height="11" rx="2.5" class="snake-body"/>
+    <!-- Snake Head -->
+    <rect x="0" y="0" width="12" height="12" rx="3" class="snake-head"/>
+    <!-- Eyes -->
+    <circle cx="8" cy="3" r="1.8" class="snake-eye"/>
+    <circle cx="8" cy="9" r="1.8" class="snake-eye"/>
+  </g>
+
+  <!-- Bottom Info Footer -->
+  <g transform="translate(25, 205)" class="legend-text">
+    <text x="0" y="0" fill="#00ff41">&gt;&gt; REAL-TIME CONTRIBUTION STREAK: ACTIVE</text>
+    <text x="350" y="0" fill="#8b949e">GRID PATTERN: [S.A.M.O.R.E. MATRIX PROTOCOL]</text>
+    <text x="860" y="0" text-anchor="end" fill="#00f0ff">FPS: 60 // SYNCED</text>
+  </g>
+</svg>

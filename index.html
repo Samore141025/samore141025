@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAMORE // Cyber Intelligence & AI Terminal - Shrikant More</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%20width=%22100%22%20height=%22100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+</head>
+<body>
+
+  <!-- Custom Glowing Cyber Crosshair Cursor -->
+  <div id="custom-cursor">
+    <div class="crosshair">
+      <div class="dot"></div>
+    </div>
+  </div>
+
+  <!-- CRT Scanlines Overlay -->
+  <div class="scanlines"></div>
+
+  <!-- Top HUD Bar -->
+  <header class="hud-bar">
+    <div class="hud-left">
+      <div class="sys-indicator">
+        <span class="pulse-dot"></span>
+        <span>SYS_STATUS: ONLINE</span>
+      </div>
+      <span style="color: var(--text-muted); font-size: 12px;">|</span>
+      <span style="color: var(--text-cyan); font-size: 12px; letter-spacing: 1px;">SEC_CLEARANCE: L5 // ROOT</span>
+    </div>
+    <div class="hud-right">
+      <button class="hud-btn" id="scanlineToggleBtn">⚡ CRT: ON</button>
+      <button class="hud-btn" id="soundToggleBtn">🔊 AUDIO: ONLINE</button>
+      <a href="https://github.com/Samore141025" target="_blank" class="hud-btn" style="text-decoration: none;">
+        <span>GITHUB PROFILE ↗</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="cyber-container">
+
+    <!-- Hero Identity Section -->
+    <section class="identity-hero">
+      <div class="morphing-subtitle">&gt; COGNITIVE CYBER ENTITY DETECTED // PROTOCOL ACTIVATED</div>
+      
+      <!-- Scramble Morphing Name -->
+      <div class="glitch-wrapper">
+        <h1 class="morphing-title" id="morphingName">SHRIKANT MORE</h1>
+      </div>
+
+      <div style="font-size: 13.5px; color: var(--text-muted); letter-spacing: 1px; margin-bottom: 20px;">
+        AI/ML RESEARCHER • CYBER THREAT INTELLIGENCE (CTI) • CERTIFIED ETHICAL HACKER (CEH) • OPENSHIFT AI SPECIALIST
+      </div>
+
+      <!-- S.A.M.O.R.E. Legend Matrix -->
+      <div class="samore-legend-grid">
+        <div class="legend-card">
+          <div class="legend-letter">S</div>
+          <div class="legend-label">SUSTAINABLE</div>
+          <div class="legend-desc">Green computing, resilient systems, and scalable fault-tolerant architecture.</div>
+        </div>
+        <div class="legend-card">
+          <div class="legend-letter">A</div>
+          <div class="legend-label">AUTOMATION</div>
+          <div class="legend-desc">Multi-agent systems, CI/CD orchestration, and self-healing pipelines.</div>
+        </div>
+        <div class="legend-card">
+          <div class="legend-letter">M</div>
+          <div class="legend-label">MANUFACTURING</div>
+          <div class="legend-desc">Industrial IT systems, Flash Electronics administration, and embedded reliability.</div>
+        </div>
+        <div class="legend-card">
+          <div class="legend-letter">O</div>
+          <div class="legend-label">OPTIMIZATION</div>
+          <div class="legend-desc">Model quantization, low-latency inferencing, and hyperparameter tuning.</div>
+        </div>
+        <div class="legend-card">
+          <div class="legend-letter">R</div>
+          <div class="legend-label">RESEARCH</div>
+          <div class="legend-desc">IEEE R&D, space vision at Bharatiya Antariksh, and computer vision pipelines.</div>
+        </div>
+        <div class="legend-card">
+          <div class="legend-letter">E</div>
+          <div class="legend-label">EXPANSION</div>
+          <div class="legend-desc">APAC Google Cloud GenAI, Red Hat OpenShift AI, and global hackathon leadership.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation Tabs -->
+    <nav class="cyber-tabs">
+      <button class="tab-btn active" data-tab="tab-ai">🤖 SAMORE-AI VOICE AGENT</button>
+      <button class="tab-btn" data-tab="tab-arcade">🕹️ 8-GAME CYBER ARCADE</button>
+      <button class="tab-btn" data-tab="tab-dossier">📁 CLASSIFIED DOSSIERS</button>
+      <button class="tab-btn" data-tab="tab-contact">📡 TRANSMISSION UPLINK</button>
+    </nav>
+
+    <!-- TAB 1: AI AGENT INTERFACE -->
+    <section class="tab-content active" id="tab-ai">
+      <div class="ai-agent-layout">
+        
+        <!-- Left: Agent Avatar & Audio Visualizer -->
+        <div class="ai-avatar-card">
+          <div class="avatar-radar">
+            <div class="radar-sweep-hand"></div>
+            <div class="avatar-icon">⚡</div>
+          </div>
+          <h3 style="font-family: var(--font-cyber); font-size: 16px; color: var(--text-cyan); letter-spacing: 1px;">
+            SAMORE-AI v2.6
+          </h3>
+          <div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">
+            SHUGO GUARDIAN INTELLIGENCE CORE
+          </div>
+
+          <!-- Dynamic Audio Wave Visualizer -->
+          <canvas id="aiVisualizerCanvas" class="voice-visualizer" width="280" height="48"></canvas>
+
+          <div class="ai-status-indicator">
+            <span class="pulse-dot" style="background: var(--text-cyan); box-shadow: 0 0 8px var(--text-cyan);"></span>
+            <span id="aiStatusText">STATUS: ONLINE & MONITORING</span>
+          </div>
+
+          <div style="margin-top: 18px; text-align: left; font-size: 11px; color: var(--text-muted); border-top: 1px solid var(--border-dim); padding-top: 12px; line-height: 1.5;">
+            <div>&gt; ENGINE: Web Speech TTS & STT</div>
+            <div>&gt; MODEL: Neural Pattern Classifier</div>
+            <div>&gt; KNOWLEDGE: Shrikant More Dossier</div>
+          </div>
+        </div>
+
+        <!-- Right: Terminal Chat Interface -->
+        <div class="ai-chat-window">
+          <div class="terminal-header">
+            <div class="dots">
+              <span class="dot-btn dot-red"></span>
+              <span class="dot-btn dot-yellow"></span>
+              <span class="dot-btn dot-green"></span>
+            </div>
+            <span>SAMORE_NEURAL_UPLINK.sh // LIVE PROTOCOL</span>
+            <span style="color: var(--text-primary);">PORT: 141025</span>
+          </div>
+
+          <div class="chat-messages" id="chatMessages">
+            <div class="msg msg-agent">
+              <strong>SAMORE-AI //</strong> Initialized. Greetings, Operator. I am SAMORE-AI, representing <strong>Shrikant More</strong>. I can speak and answer questions about his AI/ML research, CEH ethical hacking capabilities, SHUGO threat intelligence, or hackathon victories. Ask anything below or tap the microphone!
+            </div>
+          </div>
+
+          <!-- Quick Action Query Chips -->
+          <div class="quick-prompts">
+            <button class="prompt-chip" data-prompt="Who is Shrikant More?">⚡ Who is Shrikant More?</button>
+            <button class="prompt-chip" data-prompt="What is the meaning of SAMORE?">📜 Meaning of SAMORE?</button>
+            <button class="prompt-chip" data-prompt="Explain SHUGO and your Cyber Defense experience">🛡️ SHUGO & Cyber Defense</button>
+            <button class="prompt-chip" data-prompt="Tell me about your Space Vision at Bharatiya Antariksh Hackathon">🛰️ Satellite Vision & AI</button>
+            <button class="prompt-chip" data-prompt="What are your Red Hat OpenShift AI credentials?">☁️ Red Hat OpenShift AI</button>
+            <button class="prompt-chip" data-prompt="What was your experience at EduSkills Academy?">🎓 EduSkills Dual Internships</button>
+            <button class="prompt-chip" data-prompt="How can I contact Shrikant More?">📬 Contact & Transmission</button>
+          </div>
+
+          <!-- Input Bar -->
+          <div class="chat-input-bar">
+            <input type="text" class="chat-input" id="chatInput" placeholder="Transmit query or ask SAMORE-AI about skills, projects, hackathons..." autocomplete="off">
+            <button class="mic-btn" id="micBtn" title="Speak to AI Agent">🎤 VOICE</button>
+            <button class="send-btn" id="sendChatBtn">TRANSMIT</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TAB 2: 8-GAME CYBER ARCADE -->
+    <section class="tab-content" id="tab-arcade">
+      
+      <!-- Active Game Arena Modal / Stage -->
+      <div id="game-arena">
+        <div class="arena-controls">
+          <div class="arena-title">
+            <span>🕹️</span>
+            <span id="arenaGameTitle">CYBER ARENA ACTIVE</span>
+          </div>
+          <div style="display: flex; gap: 10px; align-items: center;">
+            <div style="font-family: var(--font-cyber); font-size: 14px; color: var(--text-cyan); margin-right: 12px;">
+              SCORE: <span id="arenaScore" style="color: var(--text-primary); font-weight: 700;">0</span>
+            </div>
+            <button class="hud-btn" id="restartGameBtn">↺ RESTART</button>
+            <button class="close-arena-btn" id="closeArenaBtn">✕ TERMINATE</button>
+          </div>
+        </div>
+
+        <div class="game-canvas-wrapper">
+          <canvas id="activeGameCanvas"></canvas>
+        </div>
+
+        <div class="game-hud-bar">
+          <span>&gt; CONTROLS: Arrow Keys / WASD / Spacebar / Mouse</span>
+          <span>&gt; AUDIO: Synthesized Web Audio FX</span>
+        </div>
+      </div>
+
+      <div class="arcade-header">
+        <div>
+          <h2 class="arcade-title">TERMINAL CYBER ARCADE // 8 DYNAMIC GAMES</h2>
+          <p style="font-size: 12.5px; color: var(--text-muted); margin-top: 4px;">
+            Select any protocol module below to deploy and launch in the real-time simulation arena.
+          </p>
+        </div>
+      </div>
+
+      <!-- 8 Dynamic Games Grid -->
+      <div class="games-grid">
+        
+        <!-- Game 1 -->
+        <div class="game-card">
+          <span class="game-badge">CONTRIBUTIONS</span>
+          <div class="game-icon">🐍</div>
+          <h3 class="game-name">Cyber Snake: Commits</h3>
+          <p class="game-desc">Consume green contribution nodes across the matrix grid. Grow your streak without colliding with firewalls.</p>
+          <button class="launch-game-btn" data-game="snake">LAUNCH PROTOCOL ▶</button>
+        </div>
+
+        <!-- Game 2 -->
+        <div class="game-card">
+          <span class="game-badge">CRYPTOGRAPHY</span>
+          <div class="game-icon">🔓</div>
+          <h3 class="game-name">Terminal Breach</h3>
+          <p class="game-desc">Crack the mainframe's 4-digit hexadecimal security access key using deduction and parity hints.</p>
+          <button class="launch-game-btn" data-game="breach">LAUNCH PROTOCOL ▶</button>
+        </div>
+
+        <!-- Game 3 -->
+        <div class="game-card">
+          <span class="game-badge">REFLEX</span>
+          <div class="game-icon">⚡</div>
+          <h3 class="game-name">Matrix Rain Runner</h3>
+          <p class="game-desc">Pilot a packet ship through a torrential cascade of digital glitches and corrupt data streams.</p>
+          <button class="launch-game-btn" data-game="runner">LAUNCH PROTOCOL ▶</button>
+        </div>
+
+        <!-- Game 4 -->
+        <div class="game-card">
+          <span class="game-badge">NEURAL</span>
+          <div class="game-icon">🧠</div>
+          <h3 class="game-name">Memory Core Matrix</h3>
+          <p class="game-desc">High-tech Simon Says: memorize and repeat escalating sequences of firewall authorization signals.</p>
+          <button class="launch-game-btn" data-game="memory">LAUNCH PROTOCOL ▶</button>
+        </div>
+
+        <!-- Game 5 -->
+        <div class="game-card">
+          <span class="game-badge">DEFENSE</span>
+          <div class="game-icon">🛡️</div>
+          <h3 class="game-name">DDoS Defense Blaster</h3>
+          <p class="game-desc">Intercept and neutralize incoming malicious SYN, UDP, and ACK packet swarms before they compromise the core.</p>
+          <button class="launch-game-btn" data-game="ddos">LAUNCH PROTOCOL ▶</button>
+        </div>
+
+        <!-- Game 6 -->
+        <div class="game-card">
+          <span class="game-badge">CRYPTANALYSIS</span>
+          <div class="game-icon">🧩</div>
+          <h3 class="game-name">Cipher Decode Speedrun</h3>
+          <p class="game-desc">Decrypt scrambled cybersecurity terms and frameworks against a ticking 30-second countdown clock.</p>
+          <button class="launch-game-btn" data-game="cipher">LAUNCH PROTOCOL ▶</button>
+        </div>
+
+        <!-- Game 7 -->
+        <div class="game-card">
+          <span class="game-badge">ARCADE</span>
+          <div class="game-icon">👾</div>
+          <h3 class="game-name">Cyber Invaders</h3>
+          <p class="game-desc">Retro space arcade shooter: deploy defensive pulse lasers to repel descending waves of rogue AI daemons.</p>
+          <button class="launch-game-btn" data-game="invaders">LAUNCH PROTOCOL ▶</button>
+        </div>
+
+        <!-- Game 8 -->
+        <div class="game-card">
+          <span class="game-badge">PVP / AI</span>
+          <div class="game-icon">🏓</div>
+          <h3 class="game-name">Binary Pong vs AI</h3>
+          <p class="game-desc">Deflect high-speed neon cyber packets in an intense table battle against an adaptive firewall daemon.</p>
+          <button class="launch-game-btn" data-game="pong">LAUNCH PROTOCOL ▶</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TAB 3: CLASSIFIED DOSSIERS -->
+    <section class="tab-content" id="tab-dossier">
+      <div class="dossier-grid">
+        
+        <!-- Dossier 1 -->
+        <div class="dossier-card">
+          <div class="dossier-tag">&gt;&gt; SECTOR 01 // ARTIFICIAL INTELLIGENCE</div>
+          <h3 class="dossier-title">AI, Computer Vision & Deep Learning</h3>
+          <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">
+            Extensive hands-on engineering in Deep Neural Networks, Object Detection, and Satellite Imagery at the Bharatiya Antariksh Hackathon (Optical Flow, Remote Sensing).
+          </p>
+          <div class="skill-tags">
+            <span class="skill-pill">TensorFlow</span>
+            <span class="skill-pill">Computer Vision</span>
+            <span class="skill-pill">Object Detection</span>
+            <span class="skill-pill">Satellite Image Processing</span>
+            <span class="skill-pill">Optical Flow</span>
+            <span class="skill-pill">Generative AI</span>
+            <span class="skill-pill">Google Cloud Run</span>
+            <span class="skill-pill">Python Data Science</span>
+          </div>
+        </div>
+
+        <!-- Dossier 2 -->
+        <div class="dossier-card">
+          <div class="dossier-tag">&gt;&gt; SECTOR 02 // CYBERSECURITY & DEFENSE</div>
+          <h3 class="dossier-title">Cyber Threat Intelligence & Ethical Hacking</h3>
+          <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">
+            Certified Ethical Hacker (CEH) intern at EduSkills Academy and researcher at SHUGO specializing in Cyber Threat Intelligence (CTI/CTH), multi-agent defensive orchestration, and malware analysis.
+          </p>
+          <div class="skill-tags">
+            <span class="skill-pill">CEH Certified</span>
+            <span class="skill-pill">Kali Linux</span>
+            <span class="skill-pill">Penetration Testing</span>
+            <span class="skill-pill">Malware Analysis</span>
+            <span class="skill-pill">CTI & CTH</span>
+            <span class="skill-pill">SHUGO Guardian</span>
+            <span class="skill-pill">Network Security</span>
+            <span class="skill-pill">Vulnerability Assessment</span>
+          </div>
+        </div>
+
+        <!-- Dossier 3 -->
+        <div class="dossier-card">
+          <div class="dossier-tag">&gt;&gt; SECTOR 03 // CLOUD & INFRASTRUCTURE</div>
+          <h3 class="dossier-title">Enterprise Cloud & System Architecture</h3>
+          <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">
+            Certified in Red Hat OpenShift AI (Ver 2.13) for orchestrating scalable enterprise AI/ML workloads, AWS Cloud Practitioner Essentials, and industrial IT network administration at Flash Electronics.
+          </p>
+          <div class="skill-tags">
+            <span class="skill-pill">Red Hat OpenShift AI (AI262F)</span>
+            <span class="skill-pill">AWS Cloud</span>
+            <span class="skill-pill">Linux SysAdmin</span>
+            <span class="skill-pill">Flash Electronics IT</span>
+            <span class="skill-pill">Networking & Routing</span>
+            <span class="skill-pill">SAP Integration</span>
+          </div>
+        </div>
+
+        <!-- Dossier 4 -->
+        <div class="dossier-card">
+          <div class="dossier-tag">&gt;&gt; SECTOR 04 // LEADERSHIP & ACADEMIA</div>
+          <h3 class="dossier-title">Leadership, R&D & Data Modeling</h3>
+          <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5;">
+            Student Coordinator Head at ACES NMIET spearheading organizational technical drives. Active IEEE Member contributing to R&D. Data Science internship at Cognifyz Technologies and Deloitte simulation.
+          </p>
+          <div class="skill-tags">
+            <span class="skill-pill">ACES NMIET Head</span>
+            <span class="skill-pill">IEEE R&D</span>
+            <span class="skill-pill">Cognifyz Data Science</span>
+            <span class="skill-pill">Deloitte Australia Simulation</span>
+            <span class="skill-pill">Pandas / NumPy</span>
+            <span class="skill-pill">Strategic Leadership</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TAB 4: TRANSMISSION UPLINK (CONTACT) -->
+    <section class="tab-content" id="tab-contact">
+      <div class="transmission-panel">
+        <h2 class="panel-title">ESTABLISH SECURE TRANSMISSION // CONTACT</h2>
+        <p style="font-size: 13.5px; color: var(--text-muted); line-height: 1.6; max-width: 780px;">
+          Direct communication channels are open for collaborative research, AI/ML deployment, Red Hat OpenShift workloads, ethical hacking audits, and engineering partnerships.
+        </p>
+
+        <div class="transmission-links">
+          <a href="mailto:shrikantashokmore@gmail.com" class="cyber-link-btn">
+            <span>✉️</span>
+            <span>EMAIL: shrikantashokmore@gmail.com</span>
+          </a>
+          <a href="https://www.linkedin.com/in/samore141025/" target="_blank" class="cyber-link-btn">
+            <span>🔗</span>
+            <span>LINKEDIN: /in/samore141025</span>
+          </a>
+          <a href="https://github.com/Samore141025" target="_blank" class="cyber-link-btn">
+            <span>💻</span>
+            <span>GITHUB: @Samore141025</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer style="text-align: center; padding: 24px; font-size: 12px; color: var(--text-muted); border-top: 1px solid var(--border-dim);">
+    SAMORE PROTOCOL // DESIGNED FOR SHRIKANT MORE // ENCRYPTED &amp; DEPLOYED
+  </footer>
+
+  <!-- Scripts -->
+  <script src="app.js"></script>
+  <script src="agent.js"></script>
+  <script src="games/games.js"></script>
+</body>
+</html>
